@@ -1,2 +1,9 @@
+<<<<<<< HEAD
 hello world
 test2
+=======
+hello world
+
+hallo samuel
+ich war ich
+>>>>>>> 71f9054625ed326f5793c60e137ea26ad13c1611
