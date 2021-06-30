@@ -33,9 +33,10 @@ gibt im Bohr'schen Atommodell den Betrag des magnetischen Moments eines Elektron
 Hierbei steht $e$ für die Elementarladung, $\hbar$ für das reduzierte Plancksche Wirkungsquantum und $m_e$ für die Ruhemasse des Elektrons.
 
 Der Abstand der Zeeman-Komponenten ist konstant und beträgt
-\begin{equation*}
+\begin{equation}
     \Delta E = E_{n,l,m} - E_{n,l,m-1} = \mu_B \cdot B \, .
-\end{equation*}
+    \label{eqn:energie_dif_normal}
+\end{equation}
 \\
 \begin{figure}
     \centering
@@ -61,3 +62,62 @@ Betrachtet man Emission und Absorption von Licht durch Atome in einem Magnetfeld
     \item senkrecht zum Magnetfeld werden drei linear polarisierte Komponenten gemessen (2 senkrecht und eine parallel zu $\vec{z}$)
     \item die Spektrallinien werden bei einem Übergang zwischen zwei Zuständen in drei Zeeman-Komponenten aufgespalten: $\sigma^+$, $\sigma^-$, $\pi$ -Polarisation
 \end{itemize}
+
+\subsection{Annomaler Zeeman-Effekt}
+Der anomale Zeeman-Effekt tritt auf, wenn der Gesamtspin $\vec{S} = \sum_i \vec{s_i}$ eines Atoms ungleich null ist.
+Die Aufspaltung der Spektrallinien ist in diesem Fall komplizierter, da der Elektronenspin mit einem magnetischen Moment
+\begin{equation}
+    \mu_s = -g_s \cdot \frac{\mu_B}{\hbar} \cdot \vec{s}
+    \label{eqn:lande_s}
+\end{equation}
+(analog zum Drehimpuls) verbunden ist.
+Dabei wird $g_s$ als (Spin-)Landé-Faktor bezeichnet, wobei $g_s \approx 2$ aus der Dirac-Theorie folgt.
+\\
+Der Gesamtdrehimpuls $\vec{j} = \vec{l} + \vec{s}$ ist ohne Magnetfeld zeitlich konstant, also behält Richtung und Betrag bei.
+Das gesamte magnetische Moment
+\begin{align}
+    \vec{\mu_j} &= \vec{\mu_l} + \vec{\mu_s} \\
+    &= - \frac{e}{2m_e}(\vec{l} + g_s \vec{s})
+\end{align}
+präzediert um $\vec{j}$, da $\vec{s}$ im atomaren Magnetfeld (erzeugt durch die Bahnbewegung des Elektrons) präzidiert.
+\\
+Die Projektion von $\vec{\mu_j}$ auf $\vec{j}$, auch als das mittlere magnetische Moment bezeichnet
+\begin{align}
+    <\mu_j> &= \frac{\mu_j \cdot \vec{j}}{|\vec{j}|}\\
+    &= -\frac{e}{2m_e} \left ( \frac{\vec{l} \cdot \vec{j}}{\vec{|j|}} + g_s \cdot \frac{\vec{s} \cdot \vec{j}}{\vec{|j|}} \right )
+\end{align}
+wird mithilfe der Produkte $\vec{l} \cdot \vec{j}$ und $\vec{s} \cdot \vec{j}$ wie folgt ausgedrückt:
+\begin{align}
+    <\mu_j> &= - \frac{3j(j+1) + s(s+1) - l(l+1)}{2 \cdot \sqrt{j(j+1)}} \mu_B \\
+    &= - g_j \cdot \sqrt{j(j+1)} \mu_B \\
+    &= - g_j \cdot \frac{\mu_B}{\hbar} \cdot \vec{|j|}
+\end{align}
+
+Der Landé-Faktor
+\begin{equation}
+    g_j = 1 + \frac{j(j+1) + s(s+1) - l(l+1)}{2j(j+1)}
+    \label{eqn:lande}
+\end{equation}
+kann als Quotient vom gemessenen magnetischen Moments durch den klassisch theoretisch bestimmten Wert betrachtet werden.
+Ist nur ein Bahndrehimpuls vorhanden $\vec{j}=\vec{l}$ bzw. nur ein Spinmoment $\vec{j}=\vec{s}$, so beträgt der Faktor $g_j=1$ bzw. $g_j = g_s \approx 2$.
+\\
+Im folgenden Teil wird die Annahme getroffen, dass das äußere Magnetfeld $\vec{B}$ schwächer als das durch die Bahnbewegung des Elektrons erzeugte Feld ist.
+Dann bleibt die Spin-Bahn-Kopplung ($\vec{j}=\vec{l}+\vec{s}$) erhalten und der Betrag des Gesamtdrehimpulses
+\begin{equation}
+    |\vec{j}| = \sqrt{j(j+1)} \hbar
+\end{equation}
+ist im äußeren Magnetfeld konstant.
+Die Richtung ändert sich, aufgrund des magnetischen Moments $\vec{\mu_j} = \vec{\mu_l} + \vec{\mu_s}$, welches ein Drehmoment im Magnetfeld erfährt.
+Für die z-Komponente des mittleren magnetischen Moments $<\mu_j>$ kann
+\begin{equation}
+    <\mu_j>_z = - m_j \cdot g_j \cdot \mu_B
+\end{equation}
+gefolgert werden, wobei $m_j$ halbzahlige Werte im Bereich $-j \leq m_j \leq j$ annehmen kann.
+Daraus folgt für die Energie
+\begin{align}
+    E_{m_j} &= m_j \cdot g_j \cdot \mu_B \cdot \vec{B} + E_0
+    \label{eqn:energie_anomal}
+\end{align}
+, wobei $E_0$ das Energieniveau bei ausgeschaltetem Magnetfeld angibt.
+Die Energiedifferenz $\Delta E = E_{m_j} - E{m_{j-1}}$ zwischen zwei Zeeman-Linien kann nach Gleichung \eqref{eqn:energie_anomal} bestimmt werden.
+Der Landé-Faktor \eqref{eqn:lande} ist abhängig von den Quantenzahlen $j,l$, daher ist die Aufspaltung der Sepktrallinien für die unterschiedlichen Niveaus verschieden.
