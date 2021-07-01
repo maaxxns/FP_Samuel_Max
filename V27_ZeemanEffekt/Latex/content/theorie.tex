@@ -12,6 +12,8 @@ Die Quantenzahl $n = 1, 2, 3 ...$ wird als Hauptquantenzahl bezeichnet, diese gi
 Die Nebenquantenzahl $l = 0, 1, 2, ..., n-1 $ wird auch Drehimpulsquantenzahl genannt, da dieser nach \autoref{eqn:eigenwert_l} den Eigenwert vom Quadrat des Drehimpulsoperators angibt. 
 Um die räumliche Orientierung des Drehimpulses anzugeben, wird die Magnetische Quantenzahl $m = \frac{L_z}{\hbar} = -l, - (l-1), ..., (l-1), l$ verwendet.
 Die Spinquantenzahl $s = -\frac{1}{2} , \frac{1}{2}$ gibt den Spin an.
+Die Wellenfunktion von Mehrelektronenatomen wird aus dem Produkt der Wellenfunktion einzelner nicht wechselwirkenden Teilchen gebildet.
+Für die Quantenzahlen gelten die gleichen Definitionen.
 \\ \\
 Der Bahndrehimpuls und der Elektronenspin stehen wie folgt mit den Quantenzahlen in Relation:
 \begin{align}
@@ -19,9 +21,10 @@ Der Bahndrehimpuls und der Elektronenspin stehen wie folgt mit den Quantenzahlen
     |\vec{s}| &= \sqrt{s(s+1)} \hbar \label{eqn:eigenwert_s}
 \end{align}
 
+% jj- und ls-kopplung
+
 %Normaler Zeeman
 \subsection{Normaler Zeeman-Effekt}
-\subsubsection{Allgemein}
 Wird ein Atom in ein Magnetfeld $B$ gebracht, so spalten sich die $(2l + 1)$ entarteten Spektrallinien in $(2l + 1)$ äquidistante Energieniveaus auf (siehe Abb. \ref{fig:zeeman_aufspaltung}).
 Die Aufspaltung der Spektrallinien, die durch das magnetischen Moment des Bahndrehimpuls $l$ \eqref{eqn:eigenwert_l} erzeugt wird, wird als normaler Zeeman-Effekt bezeichnet.
 Das Bohr'sche Magneton
@@ -33,9 +36,10 @@ gibt im Bohr'schen Atommodell den Betrag des magnetischen Moments eines Elektron
 Hierbei steht $e$ für die Elementarladung, $\hbar$ für das reduzierte Plancksche Wirkungsquantum und $m_e$ für die Ruhemasse des Elektrons.
 
 Der Abstand der Zeeman-Komponenten ist konstant und beträgt
-\begin{equation*}
+\begin{equation}
     \Delta E = E_{n,l,m} - E_{n,l,m-1} = \mu_B \cdot B \, .
-\end{equation*}
+    \label{eqn:energie_dif_normal}
+\end{equation}
 \\
 \begin{figure}
     \centering
@@ -51,13 +55,85 @@ Das magnetische Bahnmoment des Elektrons bzw. das magnetische Moment des Drehimp
 \end{equation}
 ergibt sich aus dem Bohrschen Magneton $\mu_B$ \eqref{eqn:magneton}, dem reduzierten plankschen Wirkungsquantum $\hbar$ und dem Einheitsvektor $\vec{l}$.
  
-\subsubsection{Emission und Absorption von Licht}
+\subsection{Emission und Absorption von Licht}
+Die Übergangsdipolmomente oder auch Dipolmatrixelement genannt müssen für einen erlaubten Übergang $E_i \rightarrow E_k$ ungleich null sein.
+Daraus lassen sich Auswahlregeln für die Quantenzahlen ableiten.
+Für die magnetische Quantenzahl muss $\Delta m = 0$ (linear polarisiertes Licht) oder $\Delta m = \pm 1$ (zirkular polarisiertes Licht) gelten.
+Die Übergänge sind in Abb. \ref{fig:uebergaenge} schematisch dargestellt.
+
+Es existieren weitere Auswahlregeln für $l, S und J$, diese werden für den Versuch nicht benötigt und daher nicht weiter erläutert.
+\\
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{content/data/uebergaenge_zeeman.png}
+    \caption{Schematische Darstellung der Übergänge.} %ref
+    \label{fig:uebergaenge}
+\end{figure}
 Betrachtet man Emission und Absorption von Licht durch Atome in einem Magnetfeld mit $\vec{B} = B \cdot \vec{z}$ wird folgendes beobachtet:
 
 \begin{itemize}
     \item fällt $\sigma^+$-polarisiertes Licht in $z$-Richtung auf ein Atom, so treten Übergänge mit $\Delta m = +1$ auf
     \item analog dazu treten bei $\sigma^-$-polarisiertem Licht Übergänge mit $\Delta m = -1$ auf
-    \item bei der Emission von Photonen, werden dem entsprechend $\sigma^+ -$ und $\sigma^-$-Licht in Feldrichtung $\vec{z}$ beobachtet
+    \item bei der Emission von Photonen, wird entsprechend $\sigma^+ -$ und $\sigma^-$-Licht in Feldrichtung $\vec{z}$ beobachtet
     \item senkrecht zum Magnetfeld werden drei linear polarisierte Komponenten gemessen (2 senkrecht und eine parallel zu $\vec{z}$)
-    \item die Spektrallinien werden bei einem Übergang zwischen zwei Zuständen in drei Zeeman-Komponenten aufgespalten: $\sigma^+$, $\sigma^-$, $\pi$ -Polarisation
+    \item die Spektrallinien werden bei einem Übergang zwischen zwei Zuständen $(n_1,l1) \rightarrow (n_2,l_2)$ in drei Zeeman-Komponenten aufgespalten: $\sigma^+$, $\sigma^-$, $\pi$ -Polarisation
 \end{itemize}
+
+\subsection{Annomaler Zeeman-Effekt}
+Der anomale Zeeman-Effekt tritt auf, wenn der Gesamtspin $\vec{S} = \sum_i \vec{s_i}$ eines Atoms ungleich null ist.
+Die Aufspaltung der Spektrallinien ist in diesem Fall komplizierter, da der Elektronenspin mit einem magnetischen Moment
+\begin{equation}
+    \mu_s = -g_s \cdot \frac{\mu_B}{\hbar} \cdot \vec{s}
+    \label{eqn:lande_s}
+\end{equation}
+(analog zum Drehimpuls) verbunden ist.
+Dabei wird $g_s$ als (Spin-)Landé-Faktor bezeichnet, wobei $g_s \approx 2$ aus der Dirac-Theorie folgt.
+\\
+Der Gesamtdrehimpuls $\vec{j} = \vec{l} + \vec{s}$ ist ohne Magnetfeld zeitlich konstant, also behält Richtung und Betrag bei.
+Das gesamte magnetische Moment
+\begin{align}
+    \vec{\mu_j} &= \vec{\mu_l} + \vec{\mu_s} \\
+    &= - \frac{e}{2m_e}(\vec{l} + g_s \vec{s})
+\end{align}
+präzediert um $\vec{j}$, da $\vec{s}$ im atomaren Magnetfeld (erzeugt durch die Bahnbewegung des Elektrons) präzidiert.
+\\
+Die Projektion von $\vec{\mu_j}$ auf $\vec{j}$, auch als das mittlere magnetische Moment bezeichnet
+\begin{align}
+    <\mu_j> &= \frac{\mu_j \cdot \vec{j}}{|\vec{j}|}\\
+    &= -\frac{e}{2m_e} \left ( \frac{\vec{l} \cdot \vec{j}}{\vec{|j|}} + g_s \cdot \frac{\vec{s} \cdot \vec{j}}{\vec{|j|}} \right )
+\end{align}
+wird mithilfe der Produkte $\vec{l} \cdot \vec{j}$ und $\vec{s} \cdot \vec{j}$ wie folgt ausgedrückt:
+\begin{align}
+    <\mu_j> &= - \frac{3j(j+1) + s(s+1) - l(l+1)}{2 \cdot \sqrt{j(j+1)}} \mu_B \\
+    &= - g_j \cdot \sqrt{j(j+1)} \mu_B \\
+    &= - g_j \cdot \frac{\mu_B}{\hbar} \cdot \vec{|j|}
+\end{align}
+
+Der Landé-Faktor
+\begin{equation}
+    g_j = 1 + \frac{j(j+1) + s(s+1) - l(l+1)}{2j(j+1)}
+    \label{eqn:lande}
+\end{equation}
+kann als Quotient vom gemessenen magnetischen Moments durch den klassisch theoretisch bestimmten Wert betrachtet werden.
+Ist nur ein Bahndrehimpuls vorhanden $\vec{j}=\vec{l}$ bzw. nur ein Spinmoment $\vec{j}=\vec{s}$, so beträgt der Faktor $g_j=1$ bzw. $g_j = g_s \approx 2$.
+\\
+Im folgenden Teil wird die Annahme getroffen, dass das äußere Magnetfeld $\vec{B}$ schwächer als das durch die Bahnbewegung des Elektrons erzeugte Feld ist.
+Dann bleibt die Spin-Bahn-Kopplung ($\vec{j}=\vec{l}+\vec{s}$) erhalten und der Betrag des Gesamtdrehimpulses
+\begin{equation}
+    |\vec{j}| = \sqrt{j(j+1)} \hbar
+\end{equation}
+ist im äußeren Magnetfeld konstant.
+Die Richtung ändert sich, aufgrund des magnetischen Moments $\vec{\mu_j} = \vec{\mu_l} + \vec{\mu_s}$, welches ein Drehmoment im Magnetfeld erfährt.
+Für die z-Komponente des mittleren magnetischen Moments $<\mu_j>$ kann
+\begin{equation}
+    <\mu_j>_z = - m_j \cdot g_j \cdot \mu_B
+\end{equation}
+gefolgert werden, wobei $m_j$ halbzahlige Werte im Bereich $-j \leq m_j \leq j$ annehmen kann.
+Daraus folgt für die Energie
+\begin{align}
+    E_{m_j} &= m_j \cdot g_j \cdot \mu_B \cdot \vec{B} + E_0
+    \label{eqn:energie_anomal}
+\end{align}
+, wobei $E_0$ das Energieniveau bei ausgeschaltetem Magnetfeld angibt.
+Die Energiedifferenz $\Delta E = E_{m_j} - E{m_{j-1}}$ zwischen zwei Zeeman-Linien kann nach Gleichung \eqref{eqn:energie_anomal} bestimmt werden.
+Der Landé-Faktor \eqref{eqn:lande} ist abhängig von den Quantenzahlen $j,l$, daher ist die Aufspaltung der Sepktrallinien für die unterschiedlichen Niveaus verschieden.
