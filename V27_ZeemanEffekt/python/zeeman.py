@@ -16,6 +16,16 @@ def delta_lam(delta_s, lambda_ , kronika_s):
     lamnda_disp = (lambda_**2)/(2*d) * np.sqrt(1/(n**2 -1))
     return 1/2 *np.sum(kronika_s)/np.sum(delta_s) *lamnda_disp
 
+def g_ij(delta_lam, lambda_, B):
+    y_b = 9.274 * 10**24
+    h = 6.626 * 10**(-34)
+    c = 299_792_458
+    return delta_lam*10**(-9) * (h*c) /(y_b * B *(lambda_*10**(-9))**2)
+
 print('verschiebung rot: ', delta_lam(delta_s_rot, 643.8 ,kronika_s_rot))
-print('verschiebung blau_pi: ', delta_lam(delta_s_blau_pi, 643.8 ,kronika_s_blau_pi))
-print('verschiebung blau_sigma: ', delta_lam(delta_s_blau_sigma, 643.8 ,kronika_s_blau_sigma))
+print('verschiebung blau_pi: ', delta_lam(delta_s_blau_pi, 480 ,kronika_s_blau_pi))
+print('verschiebung blau_sigma: ', delta_lam(delta_s_blau_sigma, 480 ,kronika_s_blau_sigma))
+
+print('g_ij für rot : ', g_ij(delta_lam(delta_s_rot, 643.8 ,kronika_s_rot), 643.8, 0.443))
+print('g_ij für blau_pi : ', g_ij(delta_lam(delta_s_blau_pi, 480 ,kronika_s_blau_pi), 480, 0.443))
+print('g_ij für blau_sigma : ', g_ij(delta_lam(delta_s_blau_sigma, 480 ,kronika_s_blau_sigma), 480, 0.365))
