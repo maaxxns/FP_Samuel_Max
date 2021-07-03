@@ -17,7 +17,7 @@ def delta_lam(delta_s, lambda_ , kronika_s):
     return 1/2 *np.sum(kronika_s)/np.sum(delta_s) *lamnda_disp
 
 def g_ij(delta_lam, lambda_, B):
-    y_b = 9.274 * 10**24
+    y_b = 9.274 * 10**(-24)
     h = 6.626 * 10**(-34)
     c = 299_792_458
     return delta_lam*10**(-9) * (h*c) /(y_b * B *(lambda_*10**(-9))**2)
