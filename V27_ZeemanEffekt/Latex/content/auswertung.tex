@@ -60,50 +60,74 @@ Oben befindet sich dabei das Licht welches durch das Magnetfeld beeinflusst wird
     \label{fig:pi-blau}
 \end{figure}
 
-Zur Messung der Wellenlängenverschiebung werden nun die Abstände zwischen Maxima und Maxima der unbeeinflussten Spektrallinien $\Delta \lambda$
-und die Abstände zwischen den Anfängen der Maxima der durch den Zeeman-Effekt beeinflussten Maxima $\delta \lambda$ gemessen.
+Zur Messung der Wellenlängenverschiebung werden nun die Abstände zwischen Maxima und Maxima der unbeeinflussten Spektrallinien $\Delta s$
+und die Abstände zwischen den Anfängen der Maxima der durch den Zeeman-Effekt beeinflussten Maxima $\delta s$ gemessen.
 Die Längen werden dabei in Anzahl von Pixeln gemessen und sind in der Tabelle \ref{tab:blau-pi} zu finden.
+Um die Werte zu visualisieren werden die Werte in einem Plot in Abbildung \ref{fig:blau_pi_mess_versch} aufgetragen.
+In der linken Grafik sind dabei die Messwerte $\Delta s$ und $\delta s$ zu sehen. In der rechten dagegen die berechnete Wellenlängenverschiebung $\delta \lambda$.
 
 \begin{table}
     \centering
     \caption{Die Abstände der Maxima der Spektrallinien in Anzahl von Pixel.
-    $\Delta \lambda$ gibt dabei die unbeeinflussten Abstände und $\delta \lambda$ die durch den Zeeman-Effekt beeinflussten Abstände, des $\pi -$ Polarisirtem Lichts an.}
+    $\Delta s$ gibt dabei die unbeeinflussten Abstände und $\delta s$ die durch den Zeeman-Effekt beeinflussten Abstände, des $\pi -$ Polarisirtem Lichts an.}
     \begin{tabular}{ccc}
         \toprule
-        Ordnung & $\Delta \lambda$ & $\delta \lambda $  \\
+        Ordnung & $\Delta s \, /$ Pixel  & $\delta s \, /$ Pixel & $\delta \lambda \, / \, \si{\nano\meter}$  \\
         \midrule
-        1  &    270 &   56  \\
-        2  &    270 &   54  \\
-        3  &    224 &   52  \\
-        4  &    206 &   54  \\
-        5  &    190 &   44  \\
-        6  &    182 &   44  \\
-        7  &    178 &   44  \\
-        8  &    165 &   40  \\
-        9  &    150 &   36  \\
-        10 &    145 &   36  \\
-        11 &    142 &   34  \\
+        1  &    270 &   56  & \SI{0.00281(25)}{} \\
+        2  &    270 &   54  & \SI{0.00271(25)}{} \\
+        3  &    224 &   52  & \SI{0.00315(31)}{} \\
+        4  &    206 &   54  & \SI{0.00356(34)}{} \\
+        5  &    190 &   44  & \SI{0.00314(36)}{} \\
+        6  &    182 &   44  & \SI{0.00328(38)}{} \\
+        7  &    178 &   44  & \SI{0.00336(39)}{} \\
+        8  &    165 &   40  & \SI{0.00329(42)}{} \\
+        9  &    150 &   36  & \SI{0.00326(46)}{} \\
+        10 &    145 &   36  & \SI{0.00337(48)}{} \\
+        11 &    142 &   34  & \SI{0.00325(49)}{} \\
     \end{tabular}
     \label{tab:blau-pi}
 \end{table}
 
-Um nun die Wellenlängenverschiebung zu berechnen wird zunächst über alle Werte gemittlet und dann die Formel
-%\begin{equation}
-%
-%    \label{eq:Wellenlängenverschiebung}
-%\end{equation}
-genutzt.
+\begin{figure}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics{content/data/blau_pi_messwerte.pdf}
+        \caption{Messwerte $\Delta s$ und $\delta s$ in Anzahl von Pixeln gegen die Ordnung aufgetragen.}
+        \label{subfig:blau_pi_mess}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}
+        \centering
+        \includegraphics{content/data/blau_pi_verschiebung.pdf}
+        \caption{Die berechnete Wellenlängenverschiebung in $\si{\nano\meter}$ in Abhängigkeit von der Ordnung.}
+        \label{subfig:blau_pi_versch}
+    \end{subfigure}
+    \label{fig:blau_pi_mess_versch}
+\end{figure}
+
+Um nun die Wellenlängenverschiebung zu berechnen wird die Formel
+\begin{equation}
+    \delta \lambda = \frac{\delta s \Delta \lambda _\text{D}}{2\Delta s}
+   \label{eq:Wellenlaengenverschiebung}
+\end{equation}
+mit dem Dispersiongebiet
+\begin{equation*}
+    \Delta \lambda _\text{D} = \frac{\lambda^2}{2d\sqrt{n^2-1}}
+\end{equation*}
+genutzt. Die Formel wurde aus der Quelle \cite[4]{anleitung} entnommen.
 Zudem wird ein systematischer Fehler von $\pm 5$ Pixeln angenommen, da die Maxima der Spektrallinie im Programm \cite{paint3d} abgeschätzt worden sind.
 Zur Berechung der Fehler der Wellenlängenverschiebung wird das Python Paket \cite{uncertainties} genutzt.
 Dieses nutzt zur Berechung der Fehlerfortpflanzung die Formel
 \begin{equation}
-    .
+    F(\delta \lambda) = \frac{1}{2} \Delta \lambda _\text{D} \sqrt{\left (\frac{1}{\Delta s} F(\delta s) \right)^2 + \left ( \frac{\delta s}{\Delta s^2} F(\delta s) \right )^2}
     \label{eq:fehler_Wellenlängenverschiebung}
 \end{equation}
-Die bestimmte Wellenlängenverschiebung beträgt
+Die berechneteten Werte für die Wellenlängenverschiebung sind in Tabelle \autoref{tab:blau-pi} zu finden.
+Es wird über alle Werte der Wellenlängenverschiebung gemittelt daraus ergibt sich der Wert
 
 \begin{align*}
-    \lambda _\text{$\pi$-blau} = & \SI{0.00316(011)}{\nano\meter} \\
+    \delta \lambda _\text{$\pi$-blau} = & \SI{0.00316(011)}{\nano\meter}. \\
 \end{align*}
 
 \subsubsection{\texorpdfstring{$\sigma$}-Polarisiertes Licht}
@@ -118,39 +142,39 @@ Die Aufspaltung der Maxima des Blauen Licht welches $\sigma -$Polarisiert ist, i
     \label{fig:sigma-blau}
 \end{figure}
 
-Zur Bestimmung der Wellenlängenverschiebung wird wie beim $\pi -$Polarisiertem Licht zunächst $\Delta \lambda$ und $\delta \lambda$ gemessen.
+Zur Bestimmung der Wellenlängenverschiebung wird wie beim $\pi -$Polarisiertem Licht zunächst $\Delta s$ und $\delta s$ gemessen.
 Die gemessenen Werte sind in Tabelle \autoref{tab:blau-sigma} zu sehen.
 
 \begin{table}
     \centering
-    \caption{$\Delta \lambda$ der blauen Spektrallinie und $\delta \lambda$ des $\sigma -$Polarisiertem Lichts.}
+    \caption{$\Delta s$ der blauen Spektrallinie und $\delta s$ des $\sigma -$Polarisiertem Lichts.}
     \begin{tabular}{ccc}
         \toprule
-        Ordnung & $\Delta \lambda$ & $\delta \lambda $  \\
+        Ordnung & $\Delta s \, / $ Pixel & $\delta s \, / $ Pixel & $\delta \lambda \, / \,\si{\nano\meter}$ \\
         \midrule
-        1   &   270  &    130   \\
-        2   &   264  &    130   \\
-        3   &   227  &    109   \\
-        4   &   200  &    100   \\
-        5   &   176  &    91    \\
-        6   &   182  &    91    \\
-        7   &   164  &    80    \\
-        8   &   161  &    70    \\
-        9   &   150  &    55    \\
-        10  &   133  &    45    \\
-        11  &   130  &    38    \\
+        1   &   270  &    130   & \SI{0.00654(27)}{}   \\
+        2   &   264  &    130   & \SI{0.00669(28)}{}   \\
+        3   &   227  &    109   & \SI{0.00652(32)}{}   \\
+        4   &   200  &    100   & \SI{0.00679(79)}{}   \\
+        5   &   176  &    91    & \SI{0.00702(47)}{}   \\
+        6   &   182  &    91    & \SI{0.00679(17)}{}   \\
+        7   &   164  &    80    & \SI{0.00663(61)}{}   \\
+        8   &   161  &    70    & \SI{0.00591(03)}{}   \\
+        9   &   150  &    55    & \SI{0.00498(26)}{}   \\
+        10  &   133  &    45    & \SI{0.00459(39)}{}   \\
+        11  &   130  &    38    & \SI{0.00397(47)}{}   \\
         \bottomrule
     \end{tabular}
     \label{tab:blau-sigma}
 \end{table}
 
-Über Diese Werte $\Delta \lambda$ und $\delta \lambda$ in der Tabelle \autoref{tab:blau-sigma} wird nun gemittelt.
+Mit den Werte $\Delta s$ und $\delta s$ wird nun die Wellenlängenverschiebung $\delta \lambda$ berechnet, diese ist ebenfalls in der Tabelle \autoref{tab:blau-sigma} zu sehen.
+Zu Berechnung der Wellenlängenverschiebung wird Gleichung \eqref{eq:Wellenlaengenverschiebung} genutzt.
 Dabei wird ein systematischer Fehler von $\pm 5$ Pixeln angenommen. 
-Danach wird nach Gleichung \eqref{eq:Wellenlängenverschiebung} die Wellenlängenverschiebung berechnet.
-Hier wird der Fehler nach Gleichung \eqref{eq:fehler_Wellenlängenverschiebung} bestimmt.
-Die Wellenlängenverschiebung des $\sigma -$Polarisiertem Lichts beträgt
+Hier wird der Fehler nach Gleichung \eqref{eq:fehler_Wellenlaengenverschiebung} bestimmt.
+Die Mittlung über alle Wellenlängenverschiebung des $\sigma -$Polarisiertem Lichts ergibt
 \begin{align*}
-    \lambda _\text{$\sigma$ -blau} =& \SI{0.00621(012)}{\nano\meter}
+    \delta \lambda _\text{$\sigma$ -blau} =& \SI{0.00621(012)}{\nano\meter}
 \end{align*}
 
 \subsection{Rote Spektrallinie}
@@ -165,46 +189,58 @@ Die Aufspaltung ist in der Abildung \autoref{fig:rot-sigma} zu erkennen.
     \label{fig:rot-sigma}
 \end{figure}
 
-Es werden die Werte $\Delta \lambda$ und $\delta \lambda$ bestimmt diese sind in Tabelle \autoref{tab:sigma-rot} zu sehen.
+Es werden die Werte $\Delta s$ und $\delta s$ bestimmt diese sind in Tabelle \autoref{tab:sigma-rot} zu sehen.
 
 \begin{table}
     \centering
-    \caption{$\Delta \lambda$ der roten Spektrallinie und $\delta \lambda$ des $\sigma -$Polarisiertem Lichts.}
+    \caption{$\Delta s$ der roten Spektrallinie und $\delta s$ des $\sigma -$Polarisiertem Lichts.}
     \begin{tabular}{ccc}
         \toprule
-        Ordnung & $\Delta \lambda$ & $\delta \lambda $  \\
+        Ordnung & $\Delta s \, /$ Pixel & $\delta s \, /$ Pixel & $\delta \lambda \, / \, \si{\nano\meter}$ \\
         \midrule
-        1   &   308  &    76    \\
-        2   &   244  &    63    \\
-        3   &   228  &    59    \\
-        4   &   202  &    59    \\
-        5   &   190  &    42    \\
-        6   &   177  &    40    \\
-        7   &   168  &    34    \\
-        8   &   164  &    29    \\
-        9   &   147  &    21    \\
-        10  &   168  &    21    \\
+        1   &   308  &    76 & \SI{0.00603(40)}{}   \\
+        2   &   244  &    63 & \SI{0.00631(51)}{}   \\
+        3   &   228  &    59 & \SI{0.00632(55)}{}   \\
+        4   &   202  &    59 & \SI{0.00714(63)}{}   \\
+        5   &   190  &    42 & \SI{0.00540(65)}{}   \\
+        6   &   177  &    40 & \SI{0.00552(70)}{}   \\
+        7   &   168  &    34 & \SI{0.00494(74)}{}   \\
+        8   &   164  &    29 & \SI{0.00432(75)}{}   \\
+        9   &   147  &    21 & \SI{0.00349(84)}{}   \\
+        10  &   168  &    21 & \SI{0.00305(73)}{}   \\
         \bottomrule
     \end{tabular}
     \label{tab:sigma-rot}
 \end{table}
 
-Die Werte aus der Tabelle \autoref{tab:sigma-rot} werden gemittelt worauf nach Gleichung \eqref{eq:Wellenlängenverschiebung} die Wellenlängenverschiebung berechnet wird.
+Aus den Werte der Tabelle \autoref{tab:sigma-rot} wird nach Gleichung \eqref{eq:Wellenlaengenverschiebung} die Wellenlängenverschiebung berechnet.
+Danach wird über alle Werte gemittelt.
 Es wird ein systematische Fehler von $\pm 5$ Pixeln angenommen.
 Die Wellenlängenverschiebung für die rote $\sigma -$Polarisierte Linie beträgt
 \begin{align*}
-    \lambda _\text{$\sigma$-rot} =&  \SI{0.00544(020)}{\nano\meter} \\
+    \delta \lambda _\text{$\sigma$-rot} =&  \SI{0.00544(020)}{\nano\meter} \\
 \end{align*}
 
-Alle Wellenlängenverschiebung sind nocheinmal unten zusammengefasst zu sehen.
+Alle gemittelten Wellenlängenverschiebungen sind nocheinmal unten in Tabelle \autoref{tab:Wellenlaengenverschiebung_alle} zusammengefasst zu sehen.
 
-\begin{align*}
-    \lambda _\text{$\pi$-blau} = & \SI{0.00316(011)}{\nano\meter} \\
-    \lambda _\text{$\sigma$ -blau} =& \SI{0.00621(012)}{\nano\meter} \\
-    \lambda _\text{$\sigma$-rot} =&  \SI{0.00544(020)}{\nano\meter} \\
-    \label{tab:Wellenlängenverschiebung_alle}
-\end{align*}
+\begin{table}
+    \centering
+    \caption{Die gemittelten Wellenlängenverschiebung für die blaues $\pi$- und $\sigma$- Polarisiertes, sowie rotes $\sigma$- Polarisiertes Licht unter Einfluss des Zeeman Effekts.}
+    \begin{tabular}
+        \midrule
+        \delta \lambda _\text{$\pi$-blau} = & \SI{0.00316(011)}{\nano\meter} \\
+        \delta \lambda _\text{$\sigma$ -blau} =& \SI{0.00621(012)}{\nano\meter} \\
+        \delta \lambda _\text{$\sigma$-rot} =&  \SI{0.00544(020)}{\nano\meter} \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:Wellenlaengenverschiebung_alle}
+\end{table}
 
 \subsection{Berechung der Landé-Faktoren}
 
 Zur Berechung der Landé-Faktoren der verschieden Spektrallinie wird die Gleichung \eqref{eq:Lande_Faktor} genutzt.
+Es werden die gemittelten Wellenlängenverschiebungen aus Tabelle \autoref{tab:Wellenlaengenverschiebung_alle} verwendet um die Landé-Faktoren zu berechnen.
+Der Fehler des Landé-Faktors wird mit 
+\begin{equation*}
+    F(g_\text{ij}) = \frac{hc}{\lambda^2 \mu _\text{B}} \sqrt{\left ( \frac{1}{B} F(\delta \lambda) \right)^2}
+\end{equation*}
