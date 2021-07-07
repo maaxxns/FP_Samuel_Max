@@ -14,16 +14,16 @@ Die aufgenommenen Werte zu zu den Moden sind in \autoref{tab:moden_messwerte} ge
         Modennr. & $U \,/\, V$ & $A \,/\, V$ \\
         \midrule
         1 & $220$ & $31.25$ \\
-        & $205$ & $15.625$ \\
-        & $240$ & $15.625$ \\
+        & $205$ & $0$ \\
+        & $240$ & $0$ \\
         \hline
         2 & $140$ & $21.25$ \\
-        & $120$ & $10.625$ \\
-        & $150$ & $10.625$ \\
+        & $120$ & $0$ \\
+        & $150$ & $0$ \\
         \hline
         3 & $85$ & $17$ \\
-        & $70$ & $8.5$ \\
-        & $95$ & $8.5$ \\
+        & $70$ & $0$ \\
+        & $95$ & $0$ \\
         \bottomrule
     \end{tabular}
     \label{tab:moden_messwerte}
@@ -52,12 +52,94 @@ Die Lösung kann in \autoref{fig:moden} graphisch und in \autoref{tab:moden_erge
         \toprule
         Modennr. & $x$ & $y$ & $z$ \\
         \midrule
-        1 & $-0.052$ & $23.177$ & $-2546.875$ \\
-        2 & $-0.053$ & $14.344$ & $-945.625$ \\
-        3 & $-0.057$ & $9.35$ & $-368.333$ \\
+        1 & $-0.104$ & $46.354$ & $-5125.000$ \\
+        2 & $-0.106$ & $28.688$ & $-1912.500$ \\
+        3 & $-0.113$ & $18.700$ & $-753.667$ \\
         \bottomrule
     \end{tabular}
     \label{tab:moden_ergebnisse}
 \end{table}
 
-\subsection{Bestimmung der Frequenz und Phasengeschwindigkeit im Hohlleiter}
+\subsection{Berechnung der Bandbreite}
+Die Daten zu elektronischen Abstimmung für den höchsten Modus bei $~\SI{9000}{\mega\hertz}$ sind in \autoref{tab:elektronische_abstimmung} aufgeführt.
+\begin{table}
+    \centering
+    \caption{Daten zur elektronischen Abstimmung mit Reflektorspannung $U$ und Frequenz $f$, wobei $a)$ den Peak, $b)$ bzw. $c)$ die hälfte des Peaks rechts bzw. links vom Maximum beschreibt.}
+    \begin{tabular}{c c c c}
+        \toprule
+        & a) & b) & c) \\
+        \midrule
+        $U \,/\, \si{\volt}$ & $220$ & $210$ & $230$ \\
+        $f \,/\, \si{\mega\hertz}$ & $9010$ & $8989$ & $9029$ \\
+    \end{tabular}
+    \label{tab:elektronische_abstimmung}
+\end{table}
+
+Die elektronische Bandbreite (siehe \autoref{sec:moden_durchfuehrung}) beträgt
+\begin{equation*}
+    f' - f'' = \SI{40.0}{\mega\hertz}
+\end{equation*}
+und die Abstimm-Empfindlichkeit liegt bei
+\begin{equation*}
+    \frac{f' - f''}{U' - U''} = \SI{2.0}{\frac{\mega\hertz}{\volt}} \, .
+\end{equation*}
+
+\subsection{Bestimmung der Frequenz im Hohlleiter}
+Im folgenden Teil wird die Frequenz aus der Wellenlänge bestimmt.
+Die Wellenlänge $\lambda_g$ ergibt sich aus dem doppelten Abstand zweier Minima bzw. Maxima und beträgt hier
+\begin{align*}
+    \lambda_g &= (73 - 48) \cdot 2 \si{\milli \metre} \\
+    &= \SI{50}{\milli \metre} \, .
+\end{align*}
+Die Breite des Hohlleiters wird mit $a = \SI{22.86}{\milli \metre}$ angegeben.
+Daraus folgt nach \autoref{eq:grenzwellenlaenge} und \autoref{eq:wellenlaenge_hohleiter} die Frequenz im Hohlleiter
+\begin{equation*}
+    f = \SI{8885}{\mega\hertz}
+\end{equation*}
+,wobei mit $c = 299792458$ gerechnet wird.
+
+\subsection{Dämpfungsmessung}
+In diesem Teil soll die Dämpfung in Abhängigkeit der Einstellung der Mikrometerschraube untersucht werden.
+Die vom SWR-Meter aufgenommene Dämpfung $P$ und Mikrometersteinstellung ist in \autoref{tab:daempfung} aufgelistet und in \autoref{fig:daempfung} graphisch dargestellt.
+Die Theorie-Kurve wird aus $10$ Punkten der Eichkurve (siehe \autoref{tab:daempfung}) mithilfe einer Ausgleichsparabel der Form
+\begin{equation*}
+    P_\text{eich} = a \cdot x^2 + b \cdot x + c 
+\end{equation*}
+bestimmt:
+\begin{align*}
+    a &= \SI{1.59(6)}{} \\
+    b &= \SI{0.65(15)}{} \\
+    c &= \SI{0.03(8)}{}
+\end{align*}
+
+Wie in der Abbildung zu erkennen ist, sind die Messwerte stark zur Eichkurve verschoben.
+Es ist ein relativ konstanter Abstand zu erkennen.
+Daher wird die Differenz zwischen den Messwerten und der Eichkurve berechnet und der Mittelwert gebildet
+\begin{equation}
+    \bar{x}_\text{Verschiebung} = \SI{14.38}{\milli\metre}
+\end{equation}
+und die Messwerte um diesen Wert verschoben.
+\begin{table}
+    \centering
+    \caption{Die gemessene Dämpfung $P$ und die theoretische Dämpfung $P_\text{eich}$ als Funktion der Mikrometerablesung $x$.}
+    \label{tab:daempfung}
+    \begin{tabular}{S[table-format=1] S[table-format=1.2] S[table-format=1.2]}
+        \toprule
+        $P \,/\, \si{\dB}$ & $x \,/\, \si{\milli\metre}$ & $P_\text{eich} \,/\, \si{\dB}$\\
+        \midrule
+        0 & 2.8 & 0 \\
+        2 & 3.05 & 0.9 \\
+        4 & 3.21 & 1.4 \\
+        6 & 3.4 & 1.75 \\
+        8 & 3.5 & 2.05 \\
+        10 & 3.7 & 2.3 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{content/data/daempfung.pdf}
+    \caption{Die theoretische Dämpfungskurve (rot), Messwerte (blaue) und die angepassten Messwerte (grün) in Abhängigkeit der Mikrometereinstellung.}
+    \label{fig:daempfung}
+\end{figure}
