@@ -2,7 +2,7 @@
 \label{sec:Auswertung}
 %Siehe \autoref{fig:plot}!
 
-\subsection{Moden}
+\subsection{Die Modenkurve}
 In diesem Teil werden die Moden mithilfe eine Oszilloskop untersucht.
 Die aufgenommenen Werte zu zu den Moden sind in \autoref{tab:moden_messwerte} gelistet.
 %tabelle messwerte
@@ -29,7 +29,7 @@ Die aufgenommenen Werte zu zu den Moden sind in \autoref{tab:moden_messwerte} ge
     \label{tab:moden_messwerte}
 \end{table}
 \FloatBarrier
-Es liegt ein vollständig bestimmtes LGS vor mit drei Punkten je Mode vor.
+Es liegt ein vollständig bestimmtes LGS mit drei Punkten je Mode vor.
 Eine Moden wird durch eine Parabel
 \begin{equation*}
     y_i = x \cdot U_i^2 + y \cdot U_i + z
@@ -59,8 +59,9 @@ Die Lösung kann in \autoref{fig:moden} graphisch und in \autoref{tab:moden_erge
     \end{tabular}
     \label{tab:moden_ergebnisse}
 \end{table}
+\FloatBarrier
 
-\subsection{Berechnung der Bandbreite}
+\subsection{Die elektronische Bandbreite und Abstimm-Empfindlichkeit}
 Die Daten zu elektronischen Abstimmung für den höchsten Modus bei $~\SI{9000}{\mega\hertz}$ sind in \autoref{tab:elektronische_abstimmung} aufgeführt.
 \begin{table}
     \centering
@@ -83,8 +84,9 @@ und die Abstimm-Empfindlichkeit liegt bei
 \begin{equation*}
     \frac{f' - f''}{U' - U''} = \SI{2.0}{\frac{\mega\hertz}{\volt}} \, .
 \end{equation*}
+\FloatBarrier
 
-\subsection{Bestimmung der Frequenz im Hohlleiter}
+\subsection{Frequenz im Hohlleiter}
 Im folgenden Teil wird die Frequenz aus der Wellenlänge bestimmt.
 Die Wellenlänge $\lambda_g$ ergibt sich aus dem doppelten Abstand zweier Minima bzw. Maxima und beträgt hier
 \begin{align*}
@@ -97,8 +99,9 @@ Daraus folgt nach \autoref{eq:grenzwellenlaenge} und \autoref{eq:wellenlaenge_ho
     f = \SI{8885}{\mega\hertz}
 \end{equation*}
 ,wobei mit $c = 299792458$ gerechnet wird.
+\FloatBarrier
 
-\subsection{Dämpfungsmessung}
+\subsection{Die Dämpfungskurve}
 In diesem Teil soll die Dämpfung in Abhängigkeit der Einstellung der Mikrometerschraube untersucht werden.
 Die vom SWR-Meter aufgenommene Dämpfung $P$ und Mikrometersteinstellung ist in \autoref{tab:daempfung} aufgelistet und in \autoref{fig:daempfung} graphisch dargestellt.
 Die Theorie-Kurve wird aus $10$ Punkten der Eichkurve (siehe \autoref{tab:daempfung}) mithilfe einer Ausgleichsparabel der Form
@@ -143,3 +146,77 @@ und die Messwerte um diesen Wert verschoben.
     \caption{Die theoretische Dämpfungskurve (rot), Messwerte (blaue) und die angepassten Messwerte (grün) in Abhängigkeit der Mikrometereinstellung.}
     \label{fig:daempfung}
 \end{figure}
+\FloatBarrier
+
+\subsection{Das Stehwellenverhältnis}
+Im letzten Teil wird das Stehwellenverhältnis (SWR), also das Verhältnis zwischen maximaler und minimaler Feldstärke im Hohlleiter bestimmt.
+Dazu wird ein in der Tiefe verstellbarer Stift in den Hohlleiter geführt, für weitere Erläuterungen oder Erklärungen siehe \autoref{sec:swr}.
+Das SWR wird über drei Methoden
+\begin{itemize}
+    \item direkte Methode
+    \item $\SI{3}{\dB}$ -Methode
+    \item Abschwächer-Methode
+\end{itemize}
+bestimmt und später in der Diskussion evaluiert.
+
+\subsubsection{Direkte Methode}
+Bei der direkten Methode wird das Stehwellenverhältnis direkt vom SWR-Meter abgelesen.
+In \autoref{tab:direkte_methode} ist das SWR in Abhängigkeit der Sondentiefe (am Gleitschraubentransformator) aufgeführt.
+
+\begin{table}
+    \centering
+    \caption{Das Stehwellenverhältnis (SWR) in Abhängigkeit der Sondentiefe, bestimmt über die direkte Methode.}
+    \label{tab:direkte_methode}
+    \begin{tabular}{c c}
+        \toprule
+        SWR & Sondentiefe $\,/\, \si{\milli\metre}$ \\
+        \midrule
+        $3$ & $1.1$ \\
+        $5$ & $1.5$ \\
+        $7$ & $3.2$ \\
+        $9$ & $\infty$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\FloatBarrier
+
+\subsubsection{3 dB-Methode}
+Für die $\SI{3}{\dB}$-Methode wird die Sonde $\SI{9}{\milli\metre}$ in den Hohlleiter gefahren.
+Die Position des Schlittens bei der das SWR-Meter $\SI{3}{\dB}$ anzeigt, links vom Minimum $d_1$ bzw. rechts vom Minimum $d_2$ werden bei montiertem Abschluss gemessen.
+Für den Kurzschluss wird noch die Position zweier benachbarter Minima notiert.
+Die Messwerte sind in \autoref{tab:3db_methode} angegeben.
+
+\begin{table}
+    \centering
+    \caption{Messwerte zur $\SI{3}{\dB}$-Methode.}
+    \label{tab:3db_methode}
+    \begin{tabular}{c c c c}
+        \toprule
+        $d_1 \,/\, \si{\milli\metre}$ & $d_2 \,/\, \si{\milli\metre}$ & 1. Min $\,/\, \si{\milli\metre}$ & 2. Min $\,/\, \si{\milli\metre}$ \\
+        \midrule
+        $63.3$ & $65.3$ & $72.9$ & $48.8$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\FloatBarrier
+
+Die Wellenlänge im Hohlleiter lässt sich aus dem doppelten Abstand der Minima bestimmen:
+\begin{equation*}
+    \lambda_g = (72.9 - 48.8) \cdot 2 \, \si{\milli\metre}
+\end{equation*}
+Daraus folgt nach \autoref{eq:3db_SWR} das Stehwellenverhältnis
+\begin{equation}
+    S = \SI{7.67}{} \, .
+\end{equation}
+
+\subsubsection{Abschwächer-Methode}
+Zuletzt wird das SWR für die gleiche Sondentiefe von $\SI{9}{\milli\metre}$ über die Abschwächer-Methode bestimmt.
+Das SWR ergibt sich aus der gemessenen bzw. eingestellten Dämpfung im Minimum und Maximum (siehe \autoref{sec:abschwaecher_methode})
+\begin{align*}
+    A_1 &= \SI{20}{\dB} \\
+    A_2 &= \SI{45}{\dB}
+\end{align*}
+über \autoref{eq:daempfung_SWR} zu
+\begin{equation}
+    S = \SI{17.78}{} \, .
+\end{equation}
