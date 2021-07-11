@@ -2,7 +2,7 @@
 \label{sec:Auswertung}
 \subsection{Magnetfeld}
 Wie in Abschnitt \ref{sec:Durchführung} beschrieben, wird zunächst die Stärke des Magnetfeldes $B$ in Abhängigkeit des angelegten Stroms $I$ bestimmt.
-Die aufgenommenen Messwerte sind in der Tabelle \ref{tab:Magnetfeld} zu sehen.
+Die aufgenommenen Messwerte sind in der \autoref{tab:Magnetfeld} zu sehen.
 
 \begin{table}
     \centering
@@ -22,8 +22,7 @@ Die aufgenommenen Messwerte sind in der Tabelle \ref{tab:Magnetfeld} zu sehen.
     \end{tabular}
     \label{tab:Magnetfeld}
 \end{table}
-
-Die aufgenommenen Werte werden in Abbildung \autoref{fig:Magnetfeld} gegeneinander aufgetragen.
+Die aufgenommenen Werte werden in \autoref{fig:Magnetfeld} gegeneinander aufgetragen.
 Dabei wird die Abbildung mit dem Python Paket 'matplotlib' \cite{matplotlib} erstellt.
 Zudem wird eine Ausgleichsrechung für die Messwerte durchgeführt.
 Die Rechung wurde mit dem Python Paket 'scipy' \cite{scipy} nach der Funktion
@@ -49,23 +48,21 @@ durchgeführt und ergibt für die Koeffizienten:
 
 \subsubsection{\boldmath \texorpdfstring{$\pi$}{pi}-Polarisiertes Licht}
 Zunächst wird wie im Abschnitt \ref{sec:Durchführung} beschrieben, die Änderung der blauen Spektrallinie im Magnetfeld aufgenommen.
-Das Bild der Aufspaltung für das $\pi -$Polarisierte Licht ist dabei in Abbildung \ref{fig:pi-blau} zu sehen.
+Das Bild der Aufspaltung für das $\pi -$Polarisierte Licht ist dabei in \autoref{fig:pi-blau} zu sehen.
 In der Grafik wird die Blauen Spektrallinien ohne Einfluss durch ein Magnetfeld und die Spektrallinie des $\pi -$Polarisierten Lichts im Magnetfeld übereinander gelegt.
 Oben befindet sich dabei das Licht welches durch das Magnetfeld beeinflusst wird und unten das Licht welches nur durch durch das Prisma gebrochen wird.
-
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{content/data/Blau_0_pi_uebernander.JPG}
     \caption{Im oberen Teil des Bilder ist das $\pi -$Polarisierte Licht unter Einfluss des Zeeman-Effekts zu sehen. Im unteren Teil ist die blaue Spektrallinie der Lampe ohne Magnetfeld zum Vergleich zu sehen.}
     \label{fig:pi-blau}
 \end{figure}
-
 Zur Messung der Wellenlängenverschiebung werden nun die Abstände zwischen Maxima und Maxima der unbeeinflussten Spektrallinien $\Delta s$
 und die Abstände zwischen den Anfängen der Maxima der durch den Zeeman-Effekt beeinflussten Maxima $\delta s$ gemessen.
-Die Längen werden dabei in Anzahl von Pixeln gemessen und sind in der Tabelle \ref{tab:blau-pi} zu finden.
-Um die Messwerte zu visualisieren werden die Werte in einem Plot in Abbildung \ref{subfig:blau_pi_mess} aufgetragen.
+Die Längen werden dabei in Anzahl von Pixeln gemessen und sind in der \autoref{tab:blau-pi} zu finden.
+Um die Messwerte zu visualisieren werden die Werte in einem Plot in \autoref{subfig:blau_pi_mess} aufgetragen.
 In der linken Grafik sind dabei die Messwerte $\Delta s$ und $\delta s$ zu sehen.
-In der Abbildung \autoref{subfig:blau_pi_versch} dagegen die berechnete Wellenlängenverschiebung $\delta \lambda$.
+In der \autoref{subfig:blau_pi_versch} dagegen die berechnete Wellenlängenverschiebung $\delta \lambda$.
 
 \begin{table}
     \centering
@@ -92,7 +89,7 @@ In der Abbildung \autoref{subfig:blau_pi_versch} dagegen die berechnete Wellenl�
 \end{table}
 
 \begin{figure}
-    \caption{Links die Messwerte $\Delta s$ und $\delta s$ gegen die Ordnung geplottet und rechts die berechnete Wellenlaengenverschiebung gegen die Ordnung aufgetragen.}
+    \caption{Links die Messwerte $\Delta s$ und $\delta s$ gegen die Ordnung geplottet und rechts die berechnete Wellenlängenverschiebung gegen die Ordnung aufgetragen.}
     \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[height=5cm]{content/data/blau_pi_messwerte.pdf}
@@ -114,21 +111,21 @@ Um nun die Wellenlängenverschiebung zu berechnen wird die Formel
     \delta \lambda = \frac{\delta s \Delta \lambda _\text{D}}{2\Delta s}
    \label{eq:Wellenlaengenverschiebung}
 \end{equation}
-
-mit dem Dispersiongebiet
-
+mit dem Dispersionsgebiet
 \begin{equation*}
     \Delta \lambda _\text{D} = \frac{\lambda^2}{2d\sqrt{n^2-1}}
 \end{equation*}
-genutzt. Die Formel wurde aus der Quelle \cite[4]{anleitung} entnommen.
+genutzt. 
+\FloatBarrier
+Die Formel wurde aus der Quelle \cite[4]{anleitung} entnommen.
 Zudem wird ein systematischer Fehler von $\pm 5$ Pixeln angenommen, da die Maxima der Spektrallinie im Programm \cite{paint3d} abgeschätzt worden sind.
 Zur Berechung der Fehler der Wellenlängenverschiebung wird das Python Paket \cite{uncertainties} genutzt.
 Dieses nutzt zur Berechung der Fehlerfortpflanzung die Formel
 \begin{equation}
     F(\delta \lambda) = \frac{1}{2} \Delta \lambda _\text{D} \sqrt{\left (\frac{1}{\Delta s} F(\delta s) \right)^2 + \left ( \frac{\delta s}{\Delta s^2} F(\delta s) \right )^2}
-    \label{eq:fehler_Wellenlängenverschiebung}
+    \label{eq:fehler_Wellenlaengenverschiebung}
 \end{equation}
-Die berechneteten Werte für die Wellenlängenverschiebung sind in Tabelle \autoref{tab:blau-pi} zu finden.
+Die berechneteten Werte für die Wellenlängenverschiebung sind in \autoref{tab:blau-pi} zu finden.
 Es wird über alle Werte der Wellenlängenverschiebung gemittelt daraus ergibt sich der Wert
 
 \begin{align*}
@@ -138,7 +135,7 @@ Es wird über alle Werte der Wellenlängenverschiebung gemittelt daraus ergibt s
 \subsubsection{\boldmath\texorpdfstring{$\sigma$}{sigma} -Polarisiertes Licht}
 
 %Die selben Berechungen wurden für die Messwerte der $\sigma -$Spektrallinien des Blauen Lichts durchgeführt.
-Die Aufspaltung der Maxima des Blauen Licht welches $\sigma -$Polarisiert ist, ist in Abbildung \ref{fig:sigma-blau} zu sehen.
+Die Aufspaltung der Maxima des Blauen Licht welches $\sigma -$Polarisiert ist, ist in \autoref{fig:sigma-blau} zu sehen.
 
 \begin{figure}
     \centering
@@ -148,9 +145,9 @@ Die Aufspaltung der Maxima des Blauen Licht welches $\sigma -$Polarisiert ist, i
 \end{figure}
 
 Zur Bestimmung der Wellenlängenverschiebung wird wie beim $\pi -$Polarisiertem Licht zunächst $\Delta s$ und $\delta s$ gemessen.
-Die gemessenen Werte sind in Tabelle \autoref{tab:blau-sigma} zu sehen.
-In Abbildung \autoref{subfig:blau_sigma_mess} werden die Messwerte $\Delta s$ und $\delta s$ gegen die Ordnung aufgetragen.
-In der Grafik \autoref{subfig:blau_sigma_versch} wird die Wellenlängenverschiebung $\delta \lambda$ in $\si{\nano\meter}$ gegen die Ordnung zu geplottet. 
+Die gemessenen Werte sind in \autoref{tab:blau-sigma} zu sehen.
+In \autoref{subfig:blau_sigma_mess} werden die Messwerte $\Delta s$ und $\delta s$ gegen die Ordnung aufgetragen.
+In der \autoref{subfig:blau_sigma_versch} wird die Wellenlängenverschiebung $\delta \lambda$ in $\si{\nano\meter}$ gegen die Ordnung zu geplottet. 
 
 \begin{table}
     \centering
@@ -176,7 +173,7 @@ In der Grafik \autoref{subfig:blau_sigma_versch} wird die Wellenlängenverschieb
 \end{table}
 
 \begin{figure}
-    \caption{Links die Messwerte $\Delta s$ und $\delta s$ gegen die Ordnung geplottet und rechts die berechnete Wellenlaengenverschiebung gegen die Ordnung aufgetragen.}
+    \caption{Links die Messwerte $\Delta s$ und $\delta s$ gegen die Ordnung geplottet und rechts die berechnete Wellenlängenverschiebung gegen die Ordnung aufgetragen.}
     \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[height=5cm]{content/data/blau_sigma_messwerte.pdf}
@@ -192,7 +189,7 @@ In der Grafik \autoref{subfig:blau_sigma_versch} wird die Wellenlängenverschieb
     \end{subfigure}
     \label{fig:blau_sigma_mess_versch}
 \end{figure}
-
+\FloatBarrier
 Mit den Werte $\Delta s$ und $\delta s$ wird nun die Wellenlängenverschiebung $\delta \lambda$ berechnet, diese ist ebenfalls in der Tabelle \autoref{tab:blau-sigma} zu sehen.
 Zu Berechnung der Wellenlängenverschiebung wird Gleichung \eqref{eq:Wellenlaengenverschiebung} genutzt.
 Dabei wird ein systematischer Fehler von $\pm 5$ Pixeln angenommen. 
@@ -201,7 +198,7 @@ Die Mittlung über alle Wellenlängenverschiebung des $\sigma -$Polarisiertem Li
 \begin{align*}
     \delta \lambda _\text{$\sigma$ -blau} =& \SI{0.00621(012)}{\nano\meter}
 \end{align*}
-
+\FloatBarrier
 \subsection{Rote Spektrallinie}
 \subsubsection{\boldmath\texorpdfstring{$\sigma$}{sigma}-Polarisiertes Licht}
 Zuletzt wird die Aufspaltung von rotem Licht welches $\sigma -$Polarisiert ist aufgenommen.
@@ -241,7 +238,7 @@ in der rechten Abbildung \autoref{subfig:Rot_versch} sind die berechneten Wellen
 \end{table}
 
 \begin{figure}
-    \caption{Links die Messwerte $\Delta s$ und $\delta s$ gegen die Ordnung geplottet und rechts die berechnete Wellenlaengenverschiebung gegen die Ordnung aufgetragen.}
+    \caption{Links die Messwerte $\Delta s$ und $\delta s$ gegen die Ordnung geplottet und rechts die berechnete Wellenlängenverschiebung gegen die Ordnung aufgetragen.}
     \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[height=5cm]{content/data/Rot_messwerte.pdf}
@@ -257,7 +254,7 @@ in der rechten Abbildung \autoref{subfig:Rot_versch} sind die berechneten Wellen
     \end{subfigure}
     \label{fig:Rot_mess_versch}
 \end{figure}
-
+\FloatBarrier
 Aus den Werte der Tabelle \autoref{tab:sigma-rot} wird nach Gleichung \eqref{eq:Wellenlaengenverschiebung} die Wellenlängenverschiebung berechnet.
 Danach wird über alle Werte gemittelt.
 Es wird ein systematische Fehler von $\pm 5$ Pixeln angenommen.
@@ -265,7 +262,7 @@ Die Wellenlängenverschiebung für die rote $\sigma -$Polarisierte Linie beträg
 \begin{align*}
     \delta \lambda _\text{$\sigma$-rot} =&  \SI{0.00544(020)}{\nano\meter} \\
 \end{align*}
-
+\FloatBarrier
 Alle gemittelten Wellenlängenverschiebungen sind nocheinmal unten in Tabelle \autoref{tab:Wellenlaengenverschiebung_alle} zusammengefasst zu sehen.
 
 \begin{table}
@@ -284,13 +281,13 @@ Alle gemittelten Wellenlängenverschiebungen sind nocheinmal unten in Tabelle \a
 \subsection{Berechung der Landé-Faktoren}
 
 Zur Berechung der Landé-Faktoren der verschieden Spektrallinie wird die Gleichung \eqref{eq:Lande_Faktor} genutzt.
-Es werden die gemittelten Wellenlängenverschiebungen aus Tabelle \autoref{tab:Wellenlaengenverschiebung_alle} verwendet um die Landé-Faktoren zu berechnen.
+Es werden die gemittelten Wellenlängenverschiebungen aus \autoref{tab:Wellenlaengenverschiebung_alle} verwendet um die Landé-Faktoren zu berechnen.
 Der Fehler des Landé-Faktors wird mit 
 \begin{equation*}
     F(g_\text{ij}) = \frac{hc}{\lambda^2 \mu _\text{B}} \sqrt{\left ( \frac{1}{B} F(\delta \lambda) \right)^2}
 \end{equation*}
 
-Die berechneten Landé-Faktoren sind in Tabelle \autoref{tab:Lande-faktor} zu finden.
+Die berechneten Landé-Faktoren sind in \autoref{tab:Lande-Faktor} zu finden.
 Zu den jeweiligen Landé-Faktoren sind dort auch die genutzten $B$-Felder und die Polarisierungen und Wellenlängen beeinflussten Lichts zu sehen.
 
 \begin{table}
