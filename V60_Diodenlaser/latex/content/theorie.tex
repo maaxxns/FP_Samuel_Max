@@ -1,2 +1,87 @@
 \section{Theorie}
 \label{sec:Theorie}
+
+\subsection{Diode Laser}
+
+A Diode Laser is used in the Experiment.
+In Princepal the Laser consists of three main parts.
+\begin{itemize}
+    \item An active Medium
+    \item A pump
+    \item A Resonator
+\end{itemize}
+
+The \textbf{active Medium} consists of a \textbf{p-type} and an \textbf{n-type} Semiconductor.
+A semiconductor has a conductivity that falls between that of an insulator and a conductor.
+This property can be explained by the Band model. 
+As a result of the cristall structure of condensed matter all of the atoms in the cristall are very close together which would mean that their electrons would share the same quantum state.
+The pauli exclusion principal forbids this so the energy state of the electrons slightly change.
+The result is the so called electronic band structure.
+This means that a lot of energy levels are almost the same, these energy level can be discribe as one band.
+After one band there is a band gap in which no possible energy levels lie after the gap next band starts.
+
+The highest band that's still occupied by electrons at the Fermi level, so at absolute zero temperature, is called the valence band.
+The conduction band is the band that follows the valence band.
+In metals the properties of those two bands are combined, because the Fermi energy lies inside a band as shown in graphic \ref{fig:band_structure}.
+
+\begin{figure}
+    \centering
+    \caption{The band structure of diffrent types of condensed matter, the shades follow the Fermi-Dirac distrubution of the elctrons in the given material. The graphic is taken from source \cite{wikipedia_valence_conduction_band}}
+    \includegrapics[width=\textwidth]{content/data/Band_structure_diffrent_materials}
+    \label{fig:band_structure}
+\end{figure}
+
+In semiconductors those bands are distinc from another so the conduction band lies above the Fermi level and the valence band beneath.
+This means at absolute zero the semiconductor does not conduct.
+With rising temperature more electrons move from the valence band into the conduction band so the semiconductor gains the property to conduct.
+This property alone is not usefull on it's one for building a laser.
+To modify the conductivity and properties of the semiconductor, impurities get introduced into into thier crystal lattice.
+Depeding on the material used the result is called a p-type or n-type semiconductor.
+this process is called doping.
+
+
+For a \textbf{p-type} semiconductor a impurity is used that has less valence electrons than the material that builds the semiconductor cristall.
+This way a missing charge forms that can freely move thorugh the cristall and behaves like a positive charge, that is why p-type semiconductor are also called Acceptors.
+A picture visualizing the p-type doping is shown in graphic \ref{fig:p-type_doping}.
+As seen in the picture the Boron has one less valence electron so it can not form a covalent bond with the silicon on it's right.
+This results in a void wich is a missing charge that can move thorugh the cristall.
+
+\begin{figure}
+    \centering
+    \caption{A 2 dimensional scheme, of a p-type semiconductor made of silicon, doped with Boron. The picture is taken from source \cite{p-type_doping}.}
+    \includegrapics[width=\textwidth]{content/data/p-type-semiconductor-doping}
+    \label{fig:p-type_doping}
+\end{figure}
+
+Doping is also possible with an impurity that hase an valence electron more than the cristalls material.
+In that case the electron that can not form a covalent bond is able to move freely thorugh the cristall.
+The result is a free negativ charge. In this case the semiconductor is called an \textbf{n-type} semiconductor, or Donor.
+The picture \ref{fig:n-type_doping} shows an n-type semiconductor made of silicon which is doped with antimony.
+The result is a fith valence electron that can not form a valence bond and in return is able to move trough the cristall.
+
+\begin{figure}
+    \centering
+    \caption{A 2 dimensional scheme, of a n-type semiconductor made of silicon, doped with antimony. The picture is taken from source \cite{p-type_doping}.}
+    \includegrapics[width=\textwidth]{content/data/N-Type-Semiconductor-Doping}
+    \label{fig:n-type_doping}
+\end{figure}
+
+If now a p-type and an n-tpye semiconductor are brought together the free electrons from the n-type semiconductor tend to move into the holes of the p-type semiconductor.
+This results in emission of photons, because the energy of the n-type electrons is higher than the energy states in which they drop in the p-type semiconductor.
+This process is used as active medium in the Diode laser.
+
+But the active medium alone is not of much use, because the flow of electrons from n-type to p-type stops after a short while.
+This is because an equilibrium forms.
+To keep the elctrons moving they have to be brought back into the n-type semiconductor.
+So they have to be pumped up into the higher energy state they had before the moved into to the p-type semiconductor.
+The \textbf{pump} is achievied by applying an electric field to both semiconductor layers.
+With the electric field the electrons move back into the n-type semiconductor to start the cycle over again.
+
+With the pump and the active medium alone the laser would already emitt light but that light is not coherent, so the basic property of laser light is still missing.
+To make the laser just emitt coherent light a resonator is used.
+A \textbf{resonator} consists of two reflectiv layers that engulf the active medium.
+The distence between those mirrors is choosen to be $n \lambda/2 = L$ with $n$ as natural number, $\lambda$ the wavelength of the laser light and $L$ the distance between the mirrors.
+This way, whenever light gets emitted by the active medium its trapped between the reflectiv layers and forms a standing wave.
+The photons than bounce back and forth in the resonator and provide a feedback for the active medium.
+Which results in the emission of more photons with the same characteristics as the initial photons.
+
