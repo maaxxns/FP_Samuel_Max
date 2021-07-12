@@ -31,7 +31,7 @@ Die aufgenommenen Werte zu den Moden sind in \autoref{tab:moden_messwerte} gelis
 \end{table}
 \FloatBarrier
 Es liegt ein vollständig bestimmtes LGS mit drei Punkten je Mode vor.
-Eine Moden wird durch eine Parabel
+Eine Mode wird durch eine Parabel
 \begin{equation*}
     y_i = x \cdot U_i^2 + y \cdot U_i + z
 \end{equation*}
@@ -63,7 +63,7 @@ Die Lösung kann in \autoref{fig:moden} graphisch und in \autoref{tab:moden_erge
 \FloatBarrier
 
 \subsection{Die elektronische Bandbreite und Abstimm-Empfindlichkeit}
-Die Daten zu elektronischen Abstimmung für den höchsten Modus bei $~\SI{9000}{\mega\hertz}$ sind in \autoref{tab:elektronische_abstimmung} aufgeführt.
+Die Daten zur elektronischen Abstimmung für den höchsten Modus bei $\sim \SI{9000}{\mega\hertz}$ sind in \autoref{tab:elektronische_abstimmung} aufgeführt.
 \begin{table}
     \centering
     \caption{Daten zur elektronischen Abstimmung mit Reflektorspannung $U$ und Frequenz $f$, wobei $a)$ den Peak, $b)$ bzw. $c)$ die Hälfte des Peaks rechts bzw. links vom Maximum beschreibt.}
@@ -86,12 +86,12 @@ und die Abstimm-Empfindlichkeit liegt bei
 \end{equation*}
 \FloatBarrier
 
-\subsection{Frequenz im Hohlleiter}
+\subsection{Wellenlänge und Frequenz im Hohlleiter}
 \label{sec:ausw_frequenz}
 Im folgenden Teil wird die Frequenz aus der Wellenlänge bestimmt.
 Die Wellenlänge $\lambda_g$ ergibt sich aus dem doppelten Abstand zweier Minima bzw. Maxima und beträgt hier
 \begin{align*}
-    \lambda_g &= (73 - 48) \cdot 2 \si{\milli \metre} \\
+    \lambda_g &= (73 - 48) \cdot 2 \, \si{\milli \metre} \\
     &= \SI{50}{\milli \metre} \, .
 \end{align*}
 Die Breite des Hohlleiters wird mit $a = \SI{22.86}{\milli \metre}$ angegeben.
@@ -104,8 +104,8 @@ wobei mit $c = \SI{299792458}{\meter\second^{-1}}$ gerechnet wird.
 
 \subsection{Die Dämpfungskurve}
 In diesem Teil soll die Dämpfung in Abhängigkeit der Einstellung der Mikrometerschraube untersucht werden.
-Die vom SWR-Meter aufgenommene Dämpfung $P$ und Mikrometersteinstellung ist in \autoref{tab:daempfung} aufgelistet und in \autoref{fig:daempfung} graphisch dargestellt.
-Die Theorie-Kurve wird aus $10$ Punkten der Eichkurve (siehe \autoref{tab:daempfung}) mithilfe einer Ausgleichsparabel der Form
+Die vom SWR-Meter aufgenommene Dämpfung $P$ und Mikrometereinstellung ist in \autoref{tab:daempfung} aufgelistet und in \autoref{fig:daempfung} graphisch dargestellt.
+Die Theorie-Kurve wird aus $10$ Punkten der Eichkurve (siehe \autoref{tab:daempfung}) mithilfe einer Ausgleichsparabel (Scipy\cite{scipy}) der Form
 \begin{equation*}
     P_\text{eich} = a \cdot x^2 + b \cdot x + c 
 \end{equation*}
@@ -116,7 +116,7 @@ bestimmt:
     c &= \SI{0.03(8)}{}
 \end{align*}
 
-Wie in der Abbildung zu erkennen ist, sind die Messwerte stark, im Vergleich zur Eichkurve verschoben.
+Wie in der Abbildung zu erkennen istm sind die Messwerte im Vergleich zur Eichkurve stark verschoben.
 Es ist ein relativ konstanter Abstand zu erkennen.
 Daher wird die Differenz zwischen den Messwerten und der Eichkurve berechnet und der Mittelwert gebildet
 \begin{equation}
