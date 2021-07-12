@@ -5,9 +5,9 @@
 \subsection{Gesamtwellenfunktion und Quantenzahlen}
 Die Lösung des Wasserstoffproblems liefert die Wellenfunktion
 \begin{equation*}
-    \Psi_{n, l, m} (x, y, z) = R_{n, l}(r) \cdot Y_l^m (\vartheta, \varphi) \cdot \chi_{m_s}
+    \Psi_{n, l, m} (x, y, z) = R_{n, l}(r) \cdot Y_l^m (\vartheta, \varphi) \cdot \chi_{m_s},
 \end{equation*}
-, welche die Verteilung der Aufenthaltswahrscheinlichkeit eines Elektronens angibt.\\
+welche die Verteilung der Aufenthaltswahrscheinlichkeit eines Elektronens angibt.\\
 Die Quantenzahl $n = 1, 2, 3 ...$ wird als Hauptquantenzahl bezeichnet, diese gibt die Elektronenschale bzw. das Energieniveau an zu dem der Zustand des Elektrons gehört.
 Die Nebenquantenzahl $l = 0, 1, 2, ..., n-1 $ wird auch Drehimpulsquantenzahl genannt, da dieser nach \autoref{eqn:eigenwert_l} den Eigenwert vom Quadrat des Drehimpulsoperators angibt. 
 Um die räumliche Orientierung des Drehimpulses anzugeben, wird die Magnetische Quantenzahl $m = \frac{L_z}{\hbar} = -l, - (l-1), ..., (l-1), l$ verwendet.
@@ -36,10 +36,10 @@ gibt im Bohr'schen Atommodell den Betrag des magnetischen Moments eines Elektron
 Hierbei steht $e$ für die Elementarladung, $\hbar$ für das reduzierte Plancksche Wirkungsquantum und $m_e$ für die Ruhemasse des Elektrons.
 
 Der Abstand der Zeeman-Komponenten ist konstant und beträgt
-\begin{equation}
+\begin{equation*}
     \Delta E = E_{n,l,m} - E_{n,l,m-1} = \mu_B \cdot B \, .
     \label{eqn:energie_dif_normal}
-\end{equation}
+\end{equation*}
 \\
 \begin{figure}
     \centering
@@ -47,12 +47,11 @@ Der Abstand der Zeeman-Komponenten ist konstant und beträgt
     \caption{Schematische Darstellung des Zeeman-Effekts. Die Spektrallinien spalten sich unter Einfluss eines Magnetfeldes auf. \cite[150]{demtroeder}} %ref
     \label{fig:zeeman_aufspaltung}
 \end{figure}
-
 Das magnetische Bahnmoment des Elektrons bzw. das magnetische Moment des Drehimpulses
-\begin{equation}
+\begin{equation*}
     \vec{\mu_l} = -\frac{\mu_B}{\hbar} \cdot \vec{l}
     \label{eqn:magn_moment_l}
-\end{equation}
+\end{equation*}
 ergibt sich aus dem Bohrschen Magneton $\mu_B$ \eqref{eqn:magneton}, dem reduzierten plankschen Wirkungsquantum $\hbar$ und dem Einheitsvektor $\vec{l}$.
  
 \subsection{Emission und Absorption von Licht}
@@ -74,19 +73,19 @@ Betrachtet man Emission und Absorption von Licht durch Atome in einem Magnetfeld
 \begin{itemize}
     \item fällt $\sigma^+$-polarisiertes Licht in $z$-Richtung auf ein Atom, so treten Übergänge mit $\Delta m = +1$ auf
     \item analog dazu treten bei $\sigma^-$-polarisiertem Licht Übergänge mit $\Delta m = -1$ auf
-    \item bei der Emission von Photonen, wird entsprechend $\sigma^+ -$ und $\sigma^-$-Licht in Feldrichtung $\vec{z}$ beobachtet
+    \item bei der Emission von Photonen, wird entsprechend $\sigma^+ $- und $\sigma^-$-Licht in Feldrichtung $\vec{z}$ beobachtet
     \item senkrecht zum Magnetfeld werden drei linear polarisierte Komponenten gemessen (2 senkrecht und eine parallel zu $\vec{z}$)
     \item die Spektrallinien werden bei einem Übergang zwischen zwei Zuständen $(n_1,l_1) \rightarrow (n_2,l_2)$ in drei Zeeman-Komponenten aufgespalten: $\sigma^+$, $\sigma^-$, $\pi$ -Polarisation
 \end{itemize}
 \FloatBarrier
 
-\subsection{Annomaler Zeeman-Effekt}
-Der anomale Zeeman-Effekt tritt auf, wenn der Gesamtspin $\vec{S} = \sum_i \vec{s_i}$ eines Atoms ungleich null ist.
+\subsection{Anomaler Zeeman-Effekt}
+Der anomaler Zeeman-Effekt tritt auf, wenn der Gesamtspin $\vec{S} = \sum_i \vec{s_i}$ eines Atoms ungleich null ist.
 Die Aufspaltung der Spektrallinien ist in diesem Fall komplizierter, da der Elektronenspin mit einem magnetischen Moment
-\begin{equation}
+\begin{equation*}
     \mu_s = -g_s \cdot \frac{\mu_B}{\hbar} \cdot \vec{s}
     \label{eqn:lande_s}
-\end{equation}
+\end{equation*}
 (analog zum Drehimpuls) verbunden ist.
 Dabei wird $g_s$ als (Spin-)Landé-Faktor bezeichnet, wobei $g_s \approx 2$ aus der Dirac-Theorie folgt.
 \\
@@ -109,7 +108,6 @@ wird mithilfe der Produkte $\vec{l} \cdot \vec{j}$ und $\vec{s} \cdot \vec{j}$ w
     &= - g_j \cdot \sqrt{j(j+1)} \mu_B \\
     &= - g_j \cdot \frac{\mu_B}{\hbar} \cdot \vec{|j|}
 \end{align*}
-
 Der Landé-Faktor
 \begin{equation}
     g_j = 1 + \frac{j(j+1) + s(s+1) - l(l+1)}{2j(j+1)}
@@ -238,11 +236,10 @@ Für die blaue Linie $^3 S_1$ $\leftrightarrow$ $^3 P_1$ folgt:
 Das Magnetfeld muss optimal eingestellt sein, da sich die Linien sonst bei einem zu großen $B$-Feld überlappen.
 Wird hingegen eine zu geringe Feldstärke gewählt, so werden die Linien nicht weit genug getrennt.
 Nach Gleichung
-\begin{equation}
+\begin{equation*}
     B = - \frac{\hbar c}{\lambda^2 g_{i,j} \mu_B} \cdot \Delta \lambda_D
-\end{equation}
+\end{equation*}
 ergeben sich die optimalen Magnetfelder für die jeweiligen $\pi-$ und $\sigma-$Linien.
-
 Die Ergebnisse sind in Tabelle \ref{tab:magnetfelder} zu sehen.
 \begin{table}
     \centering
