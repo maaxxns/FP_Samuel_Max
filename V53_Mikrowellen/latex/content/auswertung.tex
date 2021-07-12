@@ -3,6 +3,7 @@
 %Siehe \autoref{fig:plot}!
 
 \subsection{Die Modenkurve}
+\label{sec:ausw_moden}
 In diesem Teil werden die Moden mithilfe eines Oszilloskops untersucht.
 Die aufgenommenen Werte zu den Moden sind in \autoref{tab:moden_messwerte} gelistet.
 %tabelle messwerte
@@ -47,7 +48,7 @@ Die Lösung kann in \autoref{fig:moden} graphisch und in \autoref{tab:moden_erge
 %tabelle ergebnisse
 \begin{table}
     \centering
-    \caption{Die Parameter $x, y, z$, die die Ausgleichsparabel für eine Mode beschreiben.}
+    \caption{Die Parameter $x, y, z$ beschreiben die Ausgleichsparabel einer Mode.}
     \begin{tabular}{c c c c}
         \toprule
         Modennr. & $x$ & $y$ & $z$ \\
@@ -86,6 +87,7 @@ und die Abstimm-Empfindlichkeit liegt bei
 \FloatBarrier
 
 \subsection{Frequenz im Hohlleiter}
+\label{sec:ausw_frequenz}
 Im folgenden Teil wird die Frequenz aus der Wellenlänge bestimmt.
 Die Wellenlänge $\lambda_g$ ergibt sich aus dem doppelten Abstand zweier Minima bzw. Maxima und beträgt hier
 \begin{align*}
@@ -148,6 +150,7 @@ und die Messwerte um diesen Wert verschoben.
 \FloatBarrier
 
 \subsection{Das Stehwellenverhältnis}
+\label{sec:aus_stehwellen}
 Im letzten Teil wird das Stehwellenverhältnis (SWR), also das Verhältnis zwischen maximaler und minimaler Feldstärke im Hohlleiter bestimmt.
 Dazu wird ein in der Tiefe verstellbarer Stift in den Hohlleiter geführt, für weitere Erläuterungen oder Erklärungen siehe \autoref{sec:swr}.
 Das SWR wird über drei Methoden
@@ -168,7 +171,7 @@ In \autoref{tab:direkte_methode} ist das SWR in Abhängigkeit der Sondentiefe (a
     \label{tab:direkte_methode}
     \begin{tabular}{c c}
         \toprule
-        SWR & Sondentiefe $\,/\, \si{\milli\metre}$ \\
+        Sondentiefe $\,/\, \si{\milli\metre}$ & SWR\\
         \midrule
         $3$ & $1.1$ \\
         $5$ & $1.5$ \\
@@ -201,7 +204,7 @@ Die Messwerte sind in \autoref{tab:3db_methode} angegeben.
 
 Die Wellenlänge im Hohlleiter lässt sich aus dem doppelten Abstand der Minima bestimmen:
 \begin{equation*}
-    \lambda_g = (72.9 - 48.8) \cdot 2 \, \si{\milli\metre}
+    \lambda_g = (72,9 - 48,8) \cdot 2 \, \si{\milli\metre} = \SI{48.2}{\milli\metre}
 \end{equation*}
 Daraus folgt nach \autoref{eq:3db_SWR} das Stehwellenverhältnis
 \begin{equation}
