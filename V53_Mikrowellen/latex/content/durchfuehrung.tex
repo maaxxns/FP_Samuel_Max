@@ -4,11 +4,11 @@
 \subsection{Untersuchung der Moden mit einem Oszilloskop}
 \subsubsection{Aufbau}
 Der Aufbau ist in Abbildung \ref{fig:moden_aufbau} zu sehen.
-Das Reflexklystron wird an die Spannungsquelle angeschlossen und die Reflektorspannung wird rechteck moduliert.
+Das Reflexklystron wird an die Spannungsquelle angeschlossen und die Reflektorspannung wird rechteckmoduliert.
 Die ausgestrahlten Mikrowellen werden durch einen Hohlleiter zu einem Einwegleiter gesendet.
 Der Einwegleiter sorgt dafür, dass keine Mikrowellen zurück in das Reflexklystron gelangen.
-Danach folgt ein Frequenzmessgerät mit dem die Frequenz der Moden bestimmt wird.
-Auf dieses folgt ein Attunator und ein Detektor, der an ein Oszilloskop angeschlossen wird.
+Danach folgt ein Frequenzmessgerät, mit dem die Frequenz der Moden bestimmt wird.
+Auf dieses folgt ein Attenuator und ein Detektor, der an ein Oszilloskop angeschlossen wird.
 
 \begin{figure}
     \centering
@@ -19,14 +19,13 @@ Auf dieses folgt ein Attunator und ein Detektor, der an ein Oszilloskop angeschl
 
 \subsubsection{Messung der Moden}
 \label{sec:moden_durchfuehrung}
-Das Reflexklystron sollte nach einer gewissen Zeit (die es zum aufwärmen benötigt) Mikrowellen ausstrahlen.
-Die Reflektorspannung muss Rechteck moduliert sein.
+Die Reflektorspannung muss rechteckmoduliert sein.
 Das Dämpfugsglied wird auf $\SI{30}{\dB}$ gestellt.
 Nun sollte auf dem Oszilloskop eine parabelförmige Modenkurve sichtbar sein.
-Mit dem Frequenzmessgerät wird nun die Frequenz der Mode bestimmt, indem die Frequenz am Messgerät so eingestellt wird, dasss am Hochpunkt der Mode ein 'Dip' zu sehen ist.
+Mit dem Frequenzmessgerät wird nun die Frequenz der Mode bestimmt, indem die Frequenz am Messgerät so eingestellt wird, dass am Hochpunkt der Mode ein 'Dip' zu sehen ist.
 Der 'Dip' entsteht durch die Messung der Frequenz mit dem Messgerät.
 Dabei entnimmt das Frequenzmessgerät der Mikrowelle im Hohlleiter ein wenig Leistung, wodurch die Amplitude abfällt.
-Die Frequenz die dann am Messgerät eingestellt ist wird notiert.
+Die Frequenz die dann am Messgerät eingestellt ist, wird notiert.
 \\\\
 Nun wird das Frequenzmessgerät verstimmt und die maximale Spannung der Mode vom Oszilloskop abgelesen.
 Danach wird die Reflektorspannung verändert bis die Spannung zum Anfang der Mode und zum Ende der Mode vom Oszilloskop abgelesen werden kann.
@@ -39,7 +38,7 @@ Darauf wird die Reflektorspannung so lange variiert bis sich der 'Dip' auf halbe
 Dadurch lässt sich die breite der Kurve bestimmen und so die Abstimm-Empfindlichkeit $\frac{f_0 - f_1}{U_0 - U_1}$ berechnen.
 
 \subsection{Messung der Frequenz, Wellenlänge und Dämpfung im Hohlleiter}
-\subsubsection{Aufabu}
+\subsubsection{Aufbau}
 \label{sec:aufbau}
 Aus dem Aufbau in Abbildung \ref{fig:moden_aufbau} wird nun der Detektor für das Oszilloskop entfernt.
 Anstelle dessen wird ein Stehwellendetektor eingebaut, der an das SWR-Meter angeschlossen ist.
@@ -50,10 +49,6 @@ Am SWR-Meter wird der $\SI{40}{\dB}$ Knopf gedrückt und eine Bandbreite von $\S
 Die Reflektorspannung des Klystrons liegt bei ungefähr $\SI{200}{\V}$ und wird rechteckmoduliert.
 Am SWR-Meter sollte ein Maximum zu sehen sein.
 
-\subsubsection{Frequenzmessung}
-Am Frequenzmessgerät wird die Frequenz eingestellt die den minimalen Ausschlag am SWR-Meter erzeugt.
-Diese Frequenz wird notiert.
-
 \subsubsection{Wellenlängenmessung}
 Der Abschluss wird durch den Kurzschluss ersetzt.
 Der Stehwellendetektor wird an einen Ort minimalen Ausschlags des SWR-Meter verschoben.
@@ -63,8 +58,7 @@ Die Wellenlänge ergibt sich nun aus der doppelten Distanz zwischen den beiden M
 Aus der Wellenlänge kann nun nach Gleichung \ref{eq:wellenlaenge_hohleiter} die Frequenz bestimmt werden.
 
 \subsubsection{Dämpfungsmessung}
-\subsubsection{Leistungsverhältnis Methode}
-Der Kurzschluss wird wieder durch den Abschluss ersetzt.
+Der Kurzschluss wird durch den Abschluss ersetzt.
 Das Klystron wird auf $\SI{9000}{\Hz}$ eingestellt.
 Die Dämpfung wird nun so eingstellt, dass am SWR-Meter ein Vollausschlag zu sehen ist.
 Die Einstellung des Dämpfungsglieds wird notiert.
