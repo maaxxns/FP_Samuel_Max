@@ -20,6 +20,7 @@ I_abs = I_ref - I_dif
 plt.figure()
 plt.plot(x, I_abs, label='Reflektivität')
 plt.grid()
+plt.yscale('log')
 plt.legend()
 plt.xlabel('x?')
 plt.ylabel('Inensität?')
