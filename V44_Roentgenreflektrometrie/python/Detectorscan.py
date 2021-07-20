@@ -5,8 +5,8 @@ import pandas as pd
 #Daten einlesen
 data = np.genfromtxt('data/detectorscan.UXD', unpack=True)
 
-theta= data[:,0]
-I = data[:, 1]
+theta= data[0,:]
+I = data[1, :]
 Ergebnisse = pd.DataFrame([])
 
 #gauss funktion def.
@@ -45,12 +45,12 @@ Ergebnisse['FWHM'] = FWHM
 #plotten
 plt.figure()
 plt.plot(theta, I, 'rx',label='Messwerte')
-plt.plot(x_max, I_max,'ko' ,label='Intensitätsaximum')
 plt.plot(x_half, [I_max/2, I_max/2], '--', label='Halbwertsbreite')
-plt.plot(x_plot, gauss(x_plot, *popt), 'b-',label='Gaußfunktion')
+plt.plot(x_plot, gauss(x_plot, *popt), 'b-',label='Gaußfunktion', alpha=0.6)
+plt.plot(x_max, I_max,'k.' ,label='Intensitätsaximum')
 plt.grid()
 plt.legend()
 plt.xlabel(r'$\theta$')
 plt.ylabel('Intentsität')
-plt.savefig('Detectorscan.pdf')
+plt.savefig('build/Detectorscan.pdf')
 
