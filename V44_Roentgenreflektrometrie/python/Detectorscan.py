@@ -24,6 +24,7 @@ x_plot = np.linspace(-0.5, 0.5, 10000)
 I_gauss = gauss(x_plot, *popt)
 I_max = np.amax(I_gauss)
 index = np.argmax(I_gauss)
+
 x_max = x_plot[index]
 
 Ergebnisse['Imax'] = I_max
@@ -37,6 +38,7 @@ x_half = [x_plot[idx_links], x_plot[idx_rechts]]
 FWHM = abs(x_half[0]- x_half[1])
 
 #Halbwertsbreite augeben
+print(*popt)
 print('maximale Intensität: ', I_max,'\n')
 print('Halbwertsbreite: ',FWHM)
 
@@ -50,7 +52,7 @@ plt.plot(x_plot, gauss(x_plot, *popt), 'b-',label='Gaußfunktion', alpha=0.6)
 plt.plot(x_max, I_max,'k.' ,label='Intensitätsaximum')
 plt.grid()
 plt.legend()
-plt.xlabel(r'$\theta$')
+plt.xlabel(r'$\alpha \, / \, \si{\theta}$')
 plt.ylabel('Intentsität')
 plt.savefig('build/Detectorscan.pdf')
 

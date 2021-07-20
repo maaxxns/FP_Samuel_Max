@@ -11,9 +11,9 @@ data_dif = np.genfromtxt('data/Omega2ThetaScan2_difuse.UXD', unpack = True)
 data_ref = np.genfromtxt('data/Omega2ThetaScan2.UXD', unpack = True)
 I_max = 1637959.6850157096 *5 #mal fünf wegen unterschiedlicher messzeiten
                               #beim Detectorscan 1s hier 5s
-a_g = 0.78 #Geometriewinkel
+a_g = 0.56 #Geometriewinkel
 d_0 = 0.24 #Strahlbreite in mm
-D = 20 #Breite Probe in mm
+D = 20 #Laenge Probe in mm
 a_g_berechnet = np.rad2deg(np.arcsin(d_0/D))
 print('Geometriewinkel gemessen: ', a_g, ', berechnet: ', a_g_berechnet, ', Differenz: ', abs(a_g-a_g_berechnet), ', Abweichung: ', abs(a_g-a_g_berechnet)/a_g_berechnet)
 lambda_0 = 1.54*10**(-10) # wellenlänge in m

@@ -15,6 +15,7 @@ def fun(x,a,b,c):
 
 z_plot = np.linspace(np.min(z), np.max(z), 10000)
 
+
 print('Strahlbreite in mm: ', abs(data[32, 0]-data[26, 0]))
 
 plt.plot(z, I, 'rx', label='Messdaten')

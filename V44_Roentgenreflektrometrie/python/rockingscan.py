@@ -6,9 +6,10 @@ import pandas as pd
 data = np.genfromtxt('data/rocking_curve_0.UXD', unpack=True)
 
 #Geometriewinkel ablesen:
-index = [0,39]
+index = [11,39]
 a_g = np.mean(np.abs(data[0, index]))
-print('Geometriewinel: ', a_g)
+print('geometriewinkel, links, rechts: ', data[0,index],' Geometriewinelmittel: ', a_g)
+
 
 plt.plot(data[0,:], data[1,:], 'rx', label='Messdaten')
 plt.axvline(data[0,11], color='green', label='Geometriewinkel')
