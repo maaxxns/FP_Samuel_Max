@@ -36,6 +36,7 @@ R_abs = R_ref - R_dif #absolute refflektivität
 #Geometriefaktor berechnen
 G = np.ones(len(R_abs))
 G[x<a_g] = D/d_0 * np.sin(np.deg2rad(x[x<a_g])) #Geometriefaktor
+print('Geometriefaktor: ', np.sum(G)/len(G))
 R_G = R_abs*G #Korrektur geometriewinkel
 
 ####Peaks finden############################################################################
@@ -58,7 +59,7 @@ delta_x = np.diff(np.deg2rad(x[idx_peaks]))
 delta_x_mean = ufloat(np.mean(delta_x),sem(delta_x))
 
 d = lambda_0 / (2*delta_x_mean)
-print('Schichtdicke berechnet: ' , d, ', Schichtdicke in echt: ', )
+print('Schichtdicke berechnet: ' , d )
 
 n1 = 1.
 z1 = 0.
@@ -67,9 +68,9 @@ k = 2*np.pi/lambda_0
 #Koeffizienten 
 delta2 = 0.5*10**(-6)
 delta3 = 6.2*10**(-6)
-sigma1 = 10*10**(-10) # m
+sigma1 = 8.5*10**(-10) # m
 sigma2 = 5.5*10**(-10) # m
-z2 = 8.77*10**(-8) # m
+z2 = 8.63*10**(-8) # m #(Schichtdicke)
 
 def parrat_rau(a_i,delta2,delta3,sigma1,sigma2,z2):
     n2 = 1. - delta2
@@ -91,15 +92,16 @@ def parrat_rau(a_i,delta2,delta3,sigma1,sigma2,z2):
     return R_parr
 
 params = [delta2,delta3,sigma1,sigma2,z2]
+# params, cov = curve_fit(parrat_rau, x[1:301], np.log(R_G[1:301])) # Curve_fit möchte nicht
 
-R_parr = parrat_rau(x[41:301], *params)
+R_parr = (parrat_rau(x[41:301], *params))
 
 
 # Kritischer Winkel
 x_c2 = np.rad2deg(np.sqrt(2*delta2))
 x_c3 = np.rad2deg(np.sqrt(2*delta3))
 
-
+print('kritischer Winkel poly: ', x_c2, 'kritischer Winkel silli: ', x_c3)
 
 # Ideale Fresnelreflektivität
 a_c_Si = 0.223
@@ -115,7 +117,7 @@ plt.plot(x[1:301], R_abs[1:301], label='Reflektivität', linewidth=0.5)
 plt.plot(x[41:301], R_ideal, label='Ideal Reflektivität nach Fresnel', linewidth=0.5)
 plt.plot(x[41:301], R_parr, '-', label='Theoriekurve', linewidth=0.5)
 plt.plot(x[1:301], R_G[1:301], '-', label=r'Reflektivität$\cdot G$', linewidth=0.5)
-plt.plot(x[idx_peaks], R_G[idx_peaks], 'kx', label='Oszillationsminima',alpha=0.8)
+plt.plot(x[idx_peaks], R_G[idx_peaks], 'rx', label='Oszillationsminima',alpha=0.8, ms=2.0)
 plt.grid()
 plt.yscale('log')
 plt.legend(loc='upper right',prop={'size': 8})
