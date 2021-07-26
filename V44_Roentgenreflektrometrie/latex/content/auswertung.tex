@@ -65,7 +65,7 @@ Die Geometriewinkel haben einen Wert von
     \bar{\alpha_\text{g}} &= \SI{0.560}{\degree}.
 \end{align*}
 Aus der Strahlbreite und der Länge der Probe $D=\SI{20}{\milli\meter}$ ist es zudem möglich den theoretischen Geometriewinkel zu berechnen.
-Dies geschieht mit Gleichung \eqref{eq:Geometriewinkel}.
+Dies geschieht mit Gleichung \eqref{eq:geometriewinkel}.
 Der daraus resultierende theoretische Geometriewinkel beträgt
 \begin{align*}
     \alpha_\text{g, theo} &= \SI{0.687}{\degree}.
@@ -86,7 +86,7 @@ Zudem werden die bestimmten Reflektivitäten voneinander abgezogen um Rückstreu
 Die so entstanden Reflektivität ist in grün in \autoref{fig:reflek} zu sehen.
 \\
 Nun werden diese Werte mit dem Geometriefaktor $G$ korrigiert.
-Dieser wird aus Gleichung \eqref{eq:Geometriefaktor}, für jeden Winkel $\alpha_\text{i}$ bestimmt.
+Dieser wird aus Gleichung \eqref{eqn:geometriefaktor}, für jeden Winkel $\alpha_\text{i}$ bestimmt.
 Die zur Berechnung nötige Strahlbreite, Länge der Probe $D$ und Geometriewinkel $\alpha_\text{g}$ werden in den zuvor getätigten Scans bestimmt.
 Die korrigiert Reflektivität ist in \autoref{fig:reflek} in braun zu sehen.
 \\\\
@@ -104,7 +104,7 @@ Die so bestimmte Schichtdicke hat einen Wert von
     d = \SI{87.7(023)}{\nano\meter}.
 \end{align*}
 
-Zur alternativen Bestimmung der Schichtdicke kann der Parratt-Algorithmus genutzt werden.
+Zur alternativen Bestimmung der Schichtdicke kann der Parratt-Algorithmus \eqref{eqn:parratt_alg} genutzt werden.
 Dieser wird in \autoref{sec:theorie} beschrieben.
 Im Fall des Versuchs müssen drei Schichten beachtet werden.
 Die des Sillizium auf dem die Probe, also die Polystyrolschicht liegt, als unterste Schicht $N=3$.
@@ -126,14 +126,14 @@ Die manuell angepassten Werte sind
     z_2 &= \SI{86.3}{\nano\meter}.  \\
 \end{align*}
 Die Theoriekurve mit den manuell angepassten Werten des Parratt-Algorithmus ist in \autoref{fig:reflek} als viollete Funktion zu finden.
-Aus den Werten $\delta_2$ und $\delta_3$ wird anschließend der kritsiche Winkel $\alpha_\text{c}$ der beiden Schichten, mithilfe von Gleichung \eqref{eq:kritischerwinkel} bestimmt.
+Aus den Werten $\delta_2$ und $\delta_3$ wird anschließend der kritsiche Winkel $\alpha_\text{c}$ der beiden Schichten, mithilfe von Gleichung \eqref{eqn:kritisch_exp} bestimmt.
 Die beiden kritsichen Winkel sind 
 \begin{align*}
     \alpha_\text{c, PS} &= \SI{0.057}{\degree}\\
     \alpha_\text{c, Si} &= \SI{0.201}{\degree}.
 \end{align*}
 \\\\
-Mit der Gleichung für die Fresnelreflektivität \eqref{eq:fresnel} wird eine ideale Reflektivität von Sillizium bestimmt.
+Mit der Gleichung für die Fresnelreflektivität \eqref{eqn:fresnelreflektivitaet} wird eine ideale Reflektivität von Sillizium bestimmt.
 Der dafür benötigte kritische Winkel von Sillizium $\alpha_\text{i, Si} = \SI{0.22}{\degree}$ wird dabei aus Quelle \cite[8]{alte_anleitung} entnommen.
 Die so bestimmten ideal Fresnelreflektivität für Sillizium wird in \autoref{fig:reflek} in rot gezeigt.
 \\\\
