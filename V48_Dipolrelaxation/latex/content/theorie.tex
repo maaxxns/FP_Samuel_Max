@@ -51,6 +51,7 @@ Da sie aber nach Gleichung \eqref{eq:Relaxationszeit} für die Bewegung eine gew
 
 
 \subsection{Herleitungs des Depolarisationsstroms über den Polarisationsansatz}
+\label{sec:polarisationsansatz}
 Die Polarisation im Kristall ist durch Gleichung \eqref{eq:Langevin} gegeben.
 Da für sehr hohe Temperatur der Zähler klein im Vergleich zum Nenner ist $pE << k_\text{B} T$ kann die Funktion durch eine Taylorentwicklung genähert werden.
 Durch diese Näherung ergibt sich für die makroskopische Polarisation dann
@@ -102,7 +103,8 @@ Durch Integration folgt
 Dabei wird eine konstante Heizrate $b = \frac{\symup{d}T}{\symup{d}t}$ angenommen.
 Durch gleichsetzen mit der Gleichung \eqref{eq:Relaxationszeit} ergibt sich
 \begin{equation}
-    \frac{W}{k_\text{b}T} = \frac{ \int_{T}^{\infty} I(T')\symup{d}T'}{\tau_0 b I(T')} \, ,
+    \frac{W}{k_\text{b}T} = \ln \frac{ \int_{T}^{\infty} I(T')\symup{d}T'}{\tau_0 b I(T')} \, ,
+    \label{eq:int}
 \end{equation}
 woraus sich die Aktivierungsenergie $W$ ergibt.
 Da bei der oberen Integrationskonstante $T=\infty$ kein Strom mehr induziert wird kann die maximale Relaxationszeit aus der Lage des ersten Maximums der Stromkurve bestimmt werden.
@@ -114,6 +116,7 @@ woraus wiederum durch einsetzen in Gleichung \eqref{eq:Relaxationszeit} die char
 
 
 \subsection{Herleitung des Depolarisationsstroms über die Stromdichte}
+\label{sec:stromdichte}
 Die Depolarisationsstromdichte setzt sich zusammen aus dem Anteil der ausgerichteten Dipole \eqref{eq:Langevin} bei einer Polarisationstemperatur $T_\text{p}$, dem Dipolmoment $p$ und der Relaxationsrate $\frac{\symup{d}N}{\symup{dt}}$ der Dipole pro Volumeneinheit
 \begin{equation}
     j(T)=P(T)\, p \,\frac{\symup{d}N}{\symup{d}t} \stackrel{\eqref{eq:Langevin2}}{=} \frac{p^2 E}{3kT_p}\frac{\symup{d}N}{\symup{d}t} \, .

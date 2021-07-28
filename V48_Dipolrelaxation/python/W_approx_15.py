@@ -10,6 +10,10 @@ I = -I + I_offset # strom vorzeichen (definition) + offsett
 I = I * 10**(-12) #ampere
 T = T + 273.15 # Kelvin
 
+# d = 3 * 10**(-3) # m
+# A = np.pi * (d/2)**2
+# I= I / A 
+
 k_B = 1.380649 * 10**(-23) #J/K
 e_volt = 1.602176634 * 10**(-19) #J
 a_unt = 7e-06
@@ -33,7 +37,7 @@ print(f'Aktivierungsenergie W = {W}J = {W/e_volt}eV')
 
 T_lin = np.linspace(T_dep.min(), T_dep.max(), 10000)
 plt.semilogy(T_dep, I_dep, 'rx', label='Messwerte')
-plt.semilogy(T_lin, I_func(T_lin, *params), label='Ausgleichsgerade')
+plt.semilogy(T_lin, I_func(T_lin, *params), label='Ausgleichsfunktion')
 plt.xlabel(r'$T \,/\, K$')
 plt.ylabel(r'$I \,/\, pA$')
 plt.legend()
