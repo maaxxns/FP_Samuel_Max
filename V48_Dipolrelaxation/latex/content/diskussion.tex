@@ -1,2 +1,41 @@
 \section{Diskussion}
 \label{sec:Diskussion}
+Die Aktivierungsenergie für strontiertes Kaliumbromid wird in der Literatur mit $W_\text{lit} = \SI{0.66}{\electronvolt}$\cite{muccillo} angegeben.
+Die Abweichungen der experimentell bestimmten Werte zum Theoriewert werden nach
+\begin{equation*}
+    \Delta X = \frac{X_\text{exp} - X_\text{th}}{X_\text{th}}
+\end{equation*}
+berechnet und sind in \autoref{tab:abweichungen_w} für die Aktivierungsenergien gelistet.
+
+\begin{table}
+    \centering
+    \begin{tabular}{c S[table-format=1.1] | S[table-format=1.3] S[table-format=2.2]}
+        \toprule
+        & $b \,/\, \si{\frac{\kelvin}{\minute}}$ & $W_\text{exp} \,/\, \si{\electronvolt}$ & $\Delta W \,/\, \si{\percent}$ \\
+        \midrule
+        Methode 1 & 1.5 & 0.79 & 19.7 \\
+        & 2.0 & 0.60 & 9.1 \\
+        Methode 2 & 1.5 & 0.729 & 10.5 \\
+        & 2.0 & 0.884 & 33.9 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Experimentell bestimmte Aktivierungsenergie und Theoriewert im Vergleich.}
+    \label{tab:abweichungen_w}
+\end{table}
+\FloatBarrier
+
+Betrachtet man den simplen Aufbau des Experiments bzw. mit welchen mitteln die Werte bestimmt wurden, so kann man die Abweichungen als akzeptabel einstufen.
+\\
+\\
+Die charakteristische Relaxationszeit wird in der Literatur mit $\tau_{0, \text{th}} = \SI{4e-14}{\second}$\cite{muccillo} aufgeführt.
+Die Abweichungen von Experimental- und Theoriewert betragen hier bis zu $\SI{e05}{\percent}$ und es ist eine Streuung in positiver und negativer Richtung zu erkennen.
+\\
+Ein Grund könnte die Verwendung von fehlerbehafteten Größen sein, die bei Rechnungen durch die Gaußsche Fehlerfortpflanzung beschrieben werden.
+Werden nun wiederholt berechnete fehlerbehaftete Größen zur Berechnung neuer Größen verwendet, so kann der Fehler großes Ausmaß annehmen.
+Dabei könnte es sich um unbekannte Fehler in den Messwerten handeln, da statistische bereits beachtet wurden.
+\\
+Wie bereits erwähnt, trägt auch der simple Aufbau des Experiments und das ablesen der Werte nach Augenmaß zu den Fehlern bei. 
+Zum Beispiel wurde die Heizrate manuell über den Heizstrom geregelt und es konnte keine konstante Steigung der Temperatur (gerade im Anfangsbereich) erreicht werden.
+\\
+Um genauere Ergebnisse zu erzielen, könnte der Heizstrom automatisch an die Temperatur angepasst werden.
+Zudem sollte die Temperatur in kleineren Intervallen gemessen werden, um gerade an den Peaks mehr Messpunkte zu erhalten, auch dies könnte automatisiert werden.

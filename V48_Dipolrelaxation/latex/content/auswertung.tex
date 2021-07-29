@@ -285,6 +285,111 @@ Aus dem Parameter $a$ folgt umgehend die Aktivierungsenergie:
 \end{figure}
 \FloatBarrier
 
-\subsection{Die charakteristische Relaxationszeit \texorpdfstring{$\tau_0$}{TEXT}}
+\subsection{Die charakteristische Relaxationszeit \texorpdfstring{$\tau_0$}{tau0}}
+Zur Bestimmung der charakteristischen Relaxationszeit wird zuerst die wahre Heizrate bestimmt.
+Dazu wird eine Ausgleichsgerade durch die Zeit-Temperatur-Wertepaare gelegt, wobei die Steigung die Heizrate angibt.
+Die zur Ausgleichsgerade
+\begin{equation*}
+    T(t) = b \cdot t + c
+\end{equation*}
+bestimmten Koeffizienten betragen für $b_\text{th} = \SI{1.5}{\kelvin \per \minute}$
+\begin{align*}
+    b_{1.5} &= \SI{1.4918(19)}{\kelvin \per \minute} \, , \\
+    c_{1.5} &= \SI{225.64(7)}{\kelvin} 
+\end{align*}
+bzw. für $b_\text{th} = \SI{2.0}{\kelvin \per \minute}$
+\begin{align}
+    b_{2.0} &= \SI{1.9875(29)}{\kelvin \per \minute} \, , \\
+    c_{2.0} &= \SI{223.13(9)}{\kelvin} \, .
+\end{align}
+Die Ergebnisse sind graphisch in \autoref{subfig:t_T_15} bzw. \autoref{subfig:t_T_20} dargestellt.
+\begin{figure}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[height=0.8\textwidth]{content/data/char_relaxationszeit_15.pdf}
+        \caption{Heizrate: $b_\text{th} = \SI{1.5}{\kelvin \per \minute}$}
+        \label{subfig:t_T_15}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[height=0.8\textwidth]{content/data/char_relaxationszeit_20.pdf}
+        \caption{Heizrate: $b_\text{th} = \SI{2.0}{\kelvin \per \minute}$}
+        \label{subfig:t_T_20}
+    \end{subfigure}
+    \caption{Die Steigung der Ausgleichgerade im Temperatur-Zeit-Diagramm entspricht der Heizrate $b$.\cite{matplotlib}\cite{scipy}\cite{numpy}}
+    \label{fig:int}
+\end{figure}
+\FloatBarrier
+Nun wird die maximale Temperatur $T_\text{max}$ aus den Daten entnommen und nach \autoref{eq:t_max} die Relaxationszeit $\tau(T_\text{max})$ für die jeweiligen Heizraten und Methoden bestimmt.
+Aus der Aktivierungsenergie $W$, den Wertepaaren $T_\text{max}$ und $\tau(T_\text{max})$ kann nach \autoref{eq:Relaxationszeit} die charakteristische Relaxationszeit ermittelt werden.
+Die Ergebnisse sind in \autoref{tab:char_relax_15} und \autoref{tab:char_relax_20} aufgeführt.
+\begin{table}
+    \centering
+    \caption{Die charakteristische Relaxationszeit $\tau_0$ und die zur Berechnung verwendeten Werte für den ersten Datensatz $b_\text{th} = \SI{1.5}{\kelvin \per \minute}$.}
+    \label{tab:char_relax_15}
+    \begin{tabular}{c | c c c c | c}
+        \toprule
+        & $b \,/\, \si{\frac{\kelvin}{\minute}}$ & $T_\text{max} \,/\, \si{\kelvin}$ & $W \,/\, \si{\electronvolt}$ & $\tau(T_\text{max}) \,/\, \si{\second}$ & $\tau_0 \,/\, \si{\second}$ \\
+        \midrule
+        Methode 1 & $\SI{1.4918(19)}{}$ & $260$ & $\SI{0.79(4)}{}$ & $\SI{298(14)}{}$ & $\SI{1.7(29)e-13}{}$ \\
+        Methode 2 & $\SI{1.4918(19)}{}$ & $260$ & $\SI{0.729(26)}{}$ & $\SI{321(11)}{}$ & $\SI{2.2(26)e-12}{}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
-\subsection{Verlauf der Relaxationszeit \texorpdfstring{$\tau (T)$}{TEXT}}
+\begin{table}
+    \centering
+    \caption{Die charakteristische Relaxationszeit $\tau_0$ und die zur Berechnung verwendeten Werte für den zweiten Datensatz $b_\text{th} = \SI{2.0}{\kelvin \per \minute}$.}
+    \label{tab:char_relax_20}
+    \begin{tabular}{c | c c c c | c}
+        \toprule
+        & $b \,/\, \si{\frac{\kelvin}{\minute}}$ & $T_\text{max} \,/\, \si{\kelvin}$ & $W \,/\, \si{\electronvolt}$ & $\tau(T_\text{max}) \,/\, \si{\second}$ & $\tau_0 \,/\, \si{\second}$ \\
+        \midrule
+        Methode 1 & $\SI{1.9875(29)}{}$ & $262$ & $\SI{0.60(3)}{}$ & $\SI{298(16)}{}$ & $\SI{0.9(13)e-09}{}$ \\
+        Methode 2 & $\SI{1.9875(29)}{}$ & $262$ & $\SI{0.884(17)}{}$ & $\SI{203(4)}{}$ & $\SI{2.3(19)e-15}{}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\FloatBarrier
+
+\newpage
+\subsection{Verlauf der Relaxationszeit \texorpdfstring{$\tau (T)$}{tau von T}}
+Zuletzt wird der Verlauf der Relaxationszeit $\tau(T)$ in Abhängigkeit der Temperatur $T$ für beide Methoden und Heizraten in \autoref{fig:tau_von_T} dargestellt.
+\begin{figure*}
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{content/data/relaxationszeit_approx_15.pdf}
+        \caption[]%
+        {{\small Methode 1, $b = \SI{1.5}{\kelvin \per \minute}$}}    
+        \label{fig:mean and std of net14}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.475\textwidth}  
+        \centering 
+        \includegraphics[width=\textwidth]{content/data/relaxationszeit_int_15.pdf}
+        \caption[]%
+        {{\small Methode 2, $b = \SI{1.5}{\kelvin \per \minute}$}}    
+        \label{fig:mean and std of net24}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \includegraphics[width=\textwidth]{content/data/relaxationszeit_approx_20.pdf}
+        \caption[]%
+        {{\small Methode 1, $b = \SI{2.0}{\kelvin \per \minute}$}}    
+        \label{fig:mean and std of net34}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \includegraphics[width=\textwidth]{content/data/relaxationszeit_int_20.pdf}
+        \caption[]%
+        {{\small Methode 2, $b = \SI{2.0}{\kelvin \per \minute}$}}    
+        \label{fig:mean and std of net44}
+    \end{subfigure}
+    \caption[ The average and standard deviation of critical parameters ]
+    {\small Die Relaxationszeit $\tau (T)$ für beide Methoden und Heizraten $b$ aufgetragen.\cite{numpy}\cite{matplotlib}} 
+    \label{fig:tau_von_T}
+\end{figure*}
