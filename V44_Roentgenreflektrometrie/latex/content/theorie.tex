@@ -151,25 +151,36 @@ Der Strahl hat anschließend die Wellenlänge $\lambda = \SI{1.54}{\angstrom}$, 
 Anschließend durchläuft der Röntgenstrahl einen Autoabsorber zur Abschwächung der Intensität und eine Blende um vorhandene Streuung auszublenden.
 Mit einer weiteren Blende kann der Einfallswinkel $\alpha_i$ eingestellt werden.
 Hinter der Probe befinden sich ebenfalls zwei Blenden, die zur Anpassung des Ausfallswinkel $\alpha_f$ dienen.
-
+\newpage
 \subsection{Geometriefaktor und Geometriewinkel}
+\begin{wrapfigure}{r}{7.5cm}
+    \caption{Schematische Darstellung des Strahlenverlaufs bei kleinem Einfallswinkel. Der Strahlendurchmesser ist größer als der der Probe.\cite[9]{anleitung}}\label{fig:geometrie}
+    \includegraphics[width=7.5cm]{content/data/geometriefaktor.jpg}
+\end{wrapfigure} 
+%\begin{minipage}{0.5\textwidth}
+%    \includegraphics[width=\textwidth]{content/data/geometriefaktor.jpg}
+%    \captionof{figure}{Schematische Darstellung des Strahlenverlaufs bei kleinem Einfallswinkel. Der Strahlendurchmesser ist größer als der der Probe.\cite[9]{anleitung}}
+%    \label{fig:geometrie}
+%\end{minipage}
+%\begin{minipage}{0.5\textwidth}
+%    Ab einem bestimmten Winkel, dem Geometriewinkel $\alpha_g$
+%    \begin{equation}
+%        \alpha_g = \sin \left ( \frac{d_0}{D} \right )
+%        \label{eq:geometriewinkel}
+%    \end{equation}
+%    übersteigt der Durchmesser des Strahls den der Probenoberfläche $D$.
+%    Dabei wird die Höhe des Strahls als $d_0$ bezeichnet.
+%    Der Geometriefaktor für kleine Eintrittswinkel $\alpha_i < \alpha_g$ ist nach
+%\end{minipage}
 Bei kleineren Einfallswinkel $\alpha_i$ trifft der Röntgenstrahl (wie in \autoref{fig:geometrie} zusehen) nicht vollständig auf die Probe.
-
-\begin{minipage}{0.5\textwidth}
-    \includegraphics[width=\textwidth]{content/data/geometriefaktor.jpg}
-    \captionof{figure}{Schematische Darstellung des Strahlenverlaufs bei kleinem Einfallswinkel. Der Strahlendurchmesser ist größer als der der Probe.\cite[9]{anleitung}}
-    \label{fig:geometrie}
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-    Ab einem bestimmten Winkel, dem Geometriewinkel $\alpha_g$
-    \begin{equation}
-        \alpha_g = \sin \left ( \frac{d_0}{D} \right )
-        \label{eq:geometriewinkel}
-    \end{equation}
-    übersteigt der Durchmesser des Strahls den der Probenoberfläche $D$.
-    Dabei wird die Höhe des Strahls als $d_0$ bezeichnet.
-    Der Geometriefaktor für kleine Eintrittswinkel $\alpha_i < \alpha_g$ ist nach
-\end{minipage}
+Ab einem bestimmten Winkel, dem Geometriewinkel $\alpha_g$
+\begin{equation}
+    \alpha_g = \sin \left ( \frac{d_0}{D} \right )
+    \label{eq:geometriewinkel}
+\end{equation}
+übersteigt der Durchmesser des Strahls den der Probenoberfläche $D$.
+Dabei wird die Höhe des Strahls als $d_0$ bezeichnet.
+Der Geometriefaktor für kleine Eintrittswinkel $\alpha_i < \alpha_g$ ist nach
 \begin{equation}
     G = \frac{D \sin \alpha_i}{d_0} \quad \text{für} \quad \alpha_i < \alpha_g
     \label{eqn:geometriefaktor}
