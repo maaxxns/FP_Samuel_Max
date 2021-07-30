@@ -3,7 +3,7 @@
 \subsection{Brechungsindex und Reflexion von Röntgenstrahlung}
 In diesem Versuch trifft Röntgenstrahlung auf die im Labordiffraktormeter platzierte Probe.
 Röntgenstrahlung ist eine elektromagnetische Welle mit Wellenlängen $\lambda < \SI{10}{\nano\metre}$.
-Tritt Strahlung aus einem Vakuum $n = 1$ (näherungsweise auch Luft) auf ein Medium ($n_2 = n \neq 1$), so wird die Brechung des Strahls durch den \textbf{Brechungsindex}
+Tritt Strahlung aus einem Vakuum $n_1 = 1$ (näherungsweise auch Luft) auf ein Medium ($n_2 = n \neq 1$), so wird die Brechung des Strahls durch den \textbf{Brechungsindex}
 \begin{equation}
     n = 1 - \delta + \mathrm{i} \beta
     \label{eqn:brechungsindex}
@@ -12,9 +12,9 @@ mit der Korrektur $\delta$ und Absorption $\beta$ beschrieben.
 Der Realteil des Brechungsindex ist für Röntgenstrahlung kleiner als 1.
 \\
 Im folgenden Teil wird die \textbf{Reflexion} von Röntgenstrahlung auf einer homogenen Schicht (ideale Glätte und unendliche Dicke) betrachtet.
-Wie in \autoref{fig:reflexion_homogen} schematisch dargestellt, trifft eine elektromagnetische Welle aus dem Vakuum $n=1$ unter dem Einfallswinkel $\alpha_i$, auf ein Medium $n = 1 - \delta + \mathrm{i} \beta$.($A$)
-Die Welle wird teilweise mit $\alpha_f = \alpha_i$, also Ausfallswinkel gleich Einfallswinkel reflektiert.($B$)
-Ein Teil wird unter dem Winkel $\alpha_t$ transmittiert und tritt somit in das Medium ein.($C$)
+Wie in \autoref{fig:reflexion_homogen} schematisch dargestellt, trifft eine elektromagnetische Welle aus dem Vakuum $n_1=1$ unter dem Einfallswinkel $\alpha_i$, auf ein Medium $n = 1 - \delta + \mathrm{i} \beta$. ($A$)
+Die Welle wird teilweise mit $\alpha_f = \alpha_i$, also Ausfallswinkel gleich Einfallswinkel reflektiert. ($B$)
+Ein Teil wird unter dem Winkel $\alpha_t$ transmittiert und tritt somit in das Medium ein. ($C$)
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{content/data/reflexion_homogen.jpg}
@@ -30,15 +30,15 @@ liegt.
 Die Absorption liegt in dem Versuch in der Größenordnung $\beta \approx 10^{-7}$ und wird daher vernachlässigt.
 Für den kritischen Winkel folgt näherungsweise
 \begin{align}
-    \alpha_c &\approx \sqrt{2 \delta} \label{eqn:kritisch_exp}\\
-    &= \lambda \sqrt{\frac{r_e \rho}{\pi}} \label{eqn:kritisch_th}
+    \alpha_c &\lambda \sqrt{\frac{r_e \rho}{\pi}} \label{eqn:kritisch_th}\\
+    &= \approx \sqrt{2 \delta} \label{eqn:kritisch_exp} \, ,
 \end{align}
-, wobei $\lambda$ die Wellenlänge der Röntgenstrahlung, $\rho$ die Elektronendichte des Materials und $r_e$ den Elektronenradius beschreibt.
+wobei $\lambda$ die Wellenlänge der Röntgenstrahlung, $\rho$ die Elektronendichte des Materials und $r_e$ den Elektronenradius beschreibt.
 Der transmittierte und reflektierte Anteil einer senkrecht zur Einfallsebene polarisierten Welle (s-polarisiert) wird durch die Fresnelschen Formeln beschrieben
-\begin{align}
+\begin{align*}
     r &= \frac{2 n_1 \cos \left( \alpha_i \right)}{n_1 \cos \left( \alpha_i \right ) + n_2 \cos \left( \alpha_t \right )} \label{eqn:fresnel_r} \\
     t &= \frac{n_1 \cos \left( \alpha_i \right ) - n_2 \cos \left( \alpha_t \right )}{n_1 \cos \left( \alpha_i \right ) + n_2 \cos \left( \alpha_t \right )} \, . \label{eqn:fresnel_t}
-\end{align}
+\end{align*}
 Der Transmissions- $t$ und Reflexionskoeffizient $r$ gilt bei Röntgenstrahlung näherungsweise auch für eine t-polarisierte Welle.
 \\
 Die Intensität einer Welle wird aus dem Betragsquadrat der Feldstärke berechnet. 
@@ -95,10 +95,10 @@ Das Prinzip ist in \autoref{fig:parratt_alg} schematisch dargestellt.
     \label{fig:parratt_alg}
 \end{figure}
 Für die $j$-te Grenzfläche wird das Verhältnis durch
-\begin{equation}
+\begin{equation*}
     X_j = \frac{R_j}{T_j} = \mathrm{e}^{-2\mathrm{i} k_{z,j} z_j} \cdot \frac{r_{j,j+1} + X_{j+1} \mathrm{e}^{2\mathrm{i} k_{z,j+1} z_j}}{1 + r_{j,j+1} X_{j+1} \mathrm{e}^{2\mathrm{i} k_{z,j+1} z_j}}
     \label{eqn:parratt_alg}
-\end{equation}
+\end{equation*}
 mit der Fresnelreflektivität der j-ten Grenzfläche $r_{j,j+1}$ und z-Komponente des Wellenvektors $k_{z,j}$
 \begin{align*}
     r_{j,j+1} &= \frac{k_{z,j} - k_{z,j+1}}{k_{z,j} + k_{z,j+1}} \, ,\\
@@ -109,18 +109,18 @@ mit der Fresnelreflektivität der j-ten Grenzfläche $r_{j,j+1}$ und z-Komponent
 \subsection{Rauigkeit}
 In der Realität existieren auf mikroskopischer Ebene keine idealen glatten Oberflächen.
 Die Fresnelkoeffizienten müssen daher mithilfe der 'root-mean-square'-Rauigkeit (rms)
-\begin{equation}
+\begin{equation*}
     \sigma_j^2 = \int \left ( z - z_j \right )^2 P_j(z) \, \mathrm{d}z
     \label{eqn:rms}
-\end{equation}
+\end{equation*}
 angepasst werden.
 Hierbei steht $P_j(z) \, \mathrm{d}z$ für die Wahrscheinlichkeit, dass die j-te Grenzfläche im Intervall $[z_j + z, z_j + z + \mathrm{d}z]$ liegt.
 Die Wahrscheinlichkeitsverteilung $P_j(z)$ wird durch eine Gaußfunktion beschrieben.
 Die Rechnung zum Parratt-Algorithmus mit den modifizierten Fresnelkoeffizienten
-\begin{align}
+\begin{align*}
     \tilde{r}_{j,j+1} &= {r}_{j,j+1} \mathrm{e}^{-2 k_{z,j} k_{z,j+1} \sigma_j^2} \label{eqn:mod_fresnel_r} \\
     \tilde{t}_{j,j+1} &= {t}_{j,j+1} \mathrm{e}^{(k_{z,j} - k_{z,j+1})^2 \cdot \frac{\sigma_j^2}{2}} \label{eqn:mod_fresnel_t}
-\end{align}
+\end{align*}
 funktioniert analog zu der für glatte Oberflächen, wie bereits oben beschrieben.
 \FloatBarrier
 
