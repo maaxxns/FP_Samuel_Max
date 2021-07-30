@@ -2,7 +2,7 @@
 \label{sec:Auswertung}
 
 \subsection{Untergrundstrom und die Strom-Temperatur-Kurve}
-Die aufgenommenen Messwerte für die KBr($\SI{0.05}{\percent \mole}$ SR) -Probe sind in \autoref{tab:daten_15} für die Heizrate $b = \SI{1.5}{\kelvin \per \minute}$ und in \autoref{tab:daten_20} für $b = \SI{2.0}{\kelvin \per \minute}$ gelistet.
+Die aufgenommenen Messwerte für die KBr($\SI{0.05}{\percent \mole}$ SR)-Probe sind in \autoref{tab:daten_15} für die Heizrate $b = \SI{1.5}{\kelvin \per \minute}$ und in \autoref{tab:daten_20} für $b = \SI{2.0}{\kelvin \per \minute}$ gelistet.
 Im folgenden wird das Vorzeichen des Heizstrom umdefiniert und der Offset des Picoampere-Meters $I_{off, 1.5} = \SI{5}{\pico\ampere}$ für $b = \SI{1.5}{\kelvin \per \minute}$ bzw. $I_{off, 2.0} = \SI{3.5}{\pico\ampere}$ für $b = \SI{2.0}{\kelvin \per \minute}$ addiert:
 \begin{equation*}
     I = I_\text{raw} \cdot (-1) + I_{off, b}
@@ -164,13 +164,13 @@ Im folgenden wird das Vorzeichen des Heizstrom umdefiniert und der Offset des Pi
 \end{table}
 
 Der Heizstrom $I$ wird in Abhängigkeit der Temperatur $T$ für jeweils beide Heizraten visuell in \autoref{fig:strom_temp_15} bzw. \autoref{fig:strom_temp_20} dargestellt.
-Die blau markierten Messwerte stellen den Untergrundstrom dar und werden für die Ausgleichsrechnung zur Bestimmung der Untergrundrom-Kurve verwendet.
+Die blau markierten Messwerte stellen den Untergrundstrom dar und werden für die Ausgleichsrechnung zur Bestimmung der Untergrundstrom-Kurve verwendet.
 Dabei steigt der Untergrundstrom exponentiell nach
 \begin{equation}
     I_\text{Untergrund}(T) = a \cdot \mathrm{e}^{b\cdot T} + c \, .
     \label{eqn:untergrund}
 \end{equation}
-Eine Ausgleichrechnung mithilfe des Python-Pakets 'Scipy'\cite{scipy} liefert die folgenden Funktionsparameter für $b = \SI{1.5}{\frac{\kelvin}{\minute}}$
+Eine Ausgleichrechnung mithilfe des Python-Pakets 'scipy'\cite{scipy} liefert die folgenden Funktionsparameter für $b = \SI{1.5}{\frac{\kelvin}{\minute}}$
 \begin{align*}
     a_{1.5} &= \SI{7(4)e-06}{\pico\ampere} \\
     b_{1.5} &= \SI{0.0488(17)}{1 / \kelvin} \\
@@ -182,7 +182,7 @@ bzw. für $b = \SI{2.0}{\frac{\kelvin}{\minute}}$
     b_{2.0} &= \SI{0.0501(20)}{1 / \kelvin} \\
     c_{2.0} &= \SI{0.73(28)}{\pico\ampere} \, .
 \end{align*}
-Die Ausgleichskurven für den Untergrundrom der jeweiligen Heizraten sind in den Abbildungen eingezeichnet, die gelb markierten Messwerte stellen den Polarisationsstorm dar und werden in den folgenden Unterkapiteln benötigt. 
+Die Ausgleichskurven für den Untergrundstrom der jeweiligen Heizraten sind in den Abbildungen eingezeichnet, die gelb markierten Messwerte stellen den Polarisationsstorm dar und werden in den folgenden Unterkapiteln benötigt. 
 
 \begin{figure}
     \centering
@@ -236,7 +236,7 @@ Die verwendeten Messwerte mit Ausgleichskurve sind einem halb-logarithmischen Di
 \end{figure}
 \FloatBarrier
 
-\subsection{Methode 2: Polarisationsansatz}
+\subsubsection{Methode 2: Polarisationsansatz}
 Zur Berechnung der Aktivierungsenergie $W$ über den Polarisationsansatz werden alle Datenpunkte zum Depolarisationsstrom (siehe \autoref{fig:strom_temp_15} bzw. \autoref{fig:strom_temp_20}) verwendet.
 Wie zuvor muss der Untergrundstrom von dem Depolarisationsstrom abgezogen werden.
 Es folgt eine lineare Ausgleichsrechnung
@@ -259,7 +259,7 @@ Die Parameter $a, c$ ergeben sich für die jeweiligen Heizraten zu
     a_{2.0} &= \SI{1.026(20)e+04}{\kelvin} \, , \\
     c_{2.0} &= \SI{-37.3(8)}{} \, .
 \end{align*}
-Die Ausgleichskurve für beide Heizraten mit den zugehörigen Messpunkten ist in \autoref{fig:int_ergebnisse} zu sehen.
+Die Ausgleichskurve für beide Heizraten mit den zugehörigen Messpunkten ist in \autoref{fig:int} zu sehen.
 Aus dem Parameter $a$ folgt umgehend die Aktivierungsenergie:
 \begin{align*}
     W_{2, 1.5} &= \SI{1.17(4)e-19}{\joule} = \SI{0.729(26)}{\electronvolt} \\
@@ -298,10 +298,10 @@ bestimmten Koeffizienten betragen für $b_\text{th} = \SI{1.5}{\kelvin \per \min
     c_{1.5} &= \SI{225.64(7)}{\kelvin} 
 \end{align*}
 bzw. für $b_\text{th} = \SI{2.0}{\kelvin \per \minute}$
-\begin{align}
+\begin{align*}
     b_{2.0} &= \SI{1.9875(29)}{\kelvin \per \minute} \, , \\
     c_{2.0} &= \SI{223.13(9)}{\kelvin} \, .
-\end{align}
+\end{align*}
 Die Ergebnisse sind graphisch in \autoref{subfig:t_T_15} bzw. \autoref{subfig:t_T_20} dargestellt.
 \begin{figure}
     \begin{subfigure}{0.48\textwidth}
