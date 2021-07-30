@@ -1,0 +1,129 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib} \PYG{k}{as} \PYG{n+nn}{mpl}
+\PYG{k+kn}{from} \PYG{n+nn}{scipy.optimize} \PYG{k+kn}{import} \PYG{n}{curve\PYGZus{}fit}\PYG{p}{,} \PYG{n}{root}
+\PYG{k+kn}{from} \PYG{n+nn}{scipy.signal} \PYG{k+kn}{import} \PYG{n}{find\PYGZus{}peaks}
+\PYG{k+kn}{from} \PYG{n+nn}{scipy.stats} \PYG{k+kn}{import} \PYG{n}{sem}
+\PYG{k+kn}{from} \PYG{n+nn}{uncertainties} \PYG{k+kn}{import} \PYG{n}{ufloat}
+
+\PYG{c+c1}{\PYGZsh{}Daten einlesen, I\PYGZus{}max aus Detectorscan}
+\PYG{n}{data\PYGZus{}dif} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{genfromtxt}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}data/Omega2ThetaScan2\PYGZus{}difuse.UXD\PYGZsq{}}\PYG{p}{,} \PYG{n}{unpack} \PYG{o}{=} \PYG{k+kc}{True}\PYG{p}{)}
+\PYG{n}{data\PYGZus{}ref} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{genfromtxt}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}data/Omega2ThetaScan2.UXD\PYGZsq{}}\PYG{p}{,} \PYG{n}{unpack} \PYG{o}{=} \PYG{k+kc}{True}\PYG{p}{)}
+\PYG{n}{I\PYGZus{}max} \PYG{o}{=} \PYG{l+m+mf}{1637959.6850157096} \PYG{o}{*}\PYG{l+m+mi}{5} \PYG{c+c1}{\PYGZsh{}mal fünf wegen unterschiedlicher messzeiten}
+                              \PYG{c+c1}{\PYGZsh{}beim Detectorscan 1s hier 5s}
+\PYG{n}{a\PYGZus{}g} \PYG{o}{=} \PYG{l+m+mf}{0.56} \PYG{c+c1}{\PYGZsh{}Geometriewinkel}
+\PYG{n}{d\PYGZus{}0} \PYG{o}{=} \PYG{l+m+mf}{0.24} \PYG{c+c1}{\PYGZsh{}Strahlbreite in mm}
+\PYG{n}{D} \PYG{o}{=} \PYG{l+m+mi}{20} \PYG{c+c1}{\PYGZsh{}Laenge Probe in mm}
+\PYG{n}{a\PYGZus{}g\PYGZus{}berechnet} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{rad2deg}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arcsin}\PYG{p}{(}\PYG{n}{d\PYGZus{}0}\PYG{o}{/}\PYG{n}{D}\PYG{p}{))}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Geometriewinkel gemessen: \PYGZsq{}}\PYG{p}{,} \PYG{n}{a\PYGZus{}g}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}, berechnet: \PYGZsq{}}\PYG{p}{,} \PYG{n}{a\PYGZus{}g\PYGZus{}berechnet}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}, Differenz: \PYGZsq{}}\PYG{p}{,} \PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{a\PYGZus{}g}\PYG{o}{\PYGZhy{}}\PYG{n}{a\PYGZus{}g\PYGZus{}berechnet}\PYG{p}{),} \PYG{l+s+s1}{\PYGZsq{}, Abweichung: \PYGZsq{}}\PYG{p}{,} \PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{a\PYGZus{}g}\PYG{o}{\PYGZhy{}}\PYG{n}{a\PYGZus{}g\PYGZus{}berechnet}\PYG{p}{)}\PYG{o}{/}\PYG{n}{a\PYGZus{}g\PYGZus{}berechnet}\PYG{p}{)}
+\PYG{n}{lambda\PYGZus{}0} \PYG{o}{=} \PYG{l+m+mf}{1.54}\PYG{o}{*}\PYG{l+m+mi}{10}\PYG{o}{**}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} wellenlänge in m}
+
+\PYG{c+c1}{\PYGZsh{}x\PYGZus{}dif und x\PYGZus{}ref sind im Grunde das selbe also wird im weiteren verlauf nur eins genutzt}
+\PYG{n}{x\PYGZus{}dif} \PYG{o}{=} \PYG{n}{data\PYGZus{}dif}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,:]}
+\PYG{n}{x\PYGZus{}ref} \PYG{o}{=} \PYG{n}{data\PYGZus{}ref}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,:]}
+\PYG{n}{x} \PYG{o}{=} \PYG{n}{x\PYGZus{}ref} \PYG{c+c1}{\PYGZsh{}schneiden ersten und letzten wert ab um teilen durch null}
+          \PYG{c+c1}{\PYGZsh{}zu verhindern und weil die nicht wichtig für auswertung sind}
+
+\PYG{n}{I\PYGZus{}dif} \PYG{o}{=} \PYG{n}{data\PYGZus{}dif}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,:]}\PYG{c+c1}{\PYGZsh{}hier gilt das selbe wie für x}
+\PYG{n}{I\PYGZus{}ref} \PYG{o}{=} \PYG{n}{data\PYGZus{}ref}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,:]}
+
+\PYG{n}{R\PYGZus{}dif} \PYG{o}{=} \PYG{n}{I\PYGZus{}dif} \PYG{o}{/} \PYG{n}{I\PYGZus{}max} \PYG{c+c1}{\PYGZsh{}berechnen den der reflektivität}
+\PYG{n}{R\PYGZus{}ref} \PYG{o}{=} \PYG{n}{I\PYGZus{}ref} \PYG{o}{/} \PYG{n}{I\PYGZus{}max}
+ 
+\PYG{n}{R\PYGZus{}abs} \PYG{o}{=} \PYG{n}{R\PYGZus{}ref} \PYG{o}{\PYGZhy{}} \PYG{n}{R\PYGZus{}dif} \PYG{c+c1}{\PYGZsh{}absolute refflektivität}
+
+
+\PYG{c+c1}{\PYGZsh{}Geometriefaktor berechnen}
+\PYG{n}{G} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{ones}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{R\PYGZus{}abs}\PYG{p}{))}
+\PYG{n}{G}\PYG{p}{[}\PYG{n}{x}\PYG{o}{\PYGZlt{}}\PYG{n}{a\PYGZus{}g}\PYG{p}{]} \PYG{o}{=} \PYG{n}{D}\PYG{o}{/}\PYG{n}{d\PYGZus{}0} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{deg2rad}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{x}\PYG{o}{\PYGZlt{}}\PYG{n}{a\PYGZus{}g}\PYG{p}{]))} \PYG{c+c1}{\PYGZsh{}Geometriefaktor}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Geometriefaktor: \PYGZsq{}}\PYG{p}{,} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{(}\PYG{n}{G}\PYG{p}{)}\PYG{o}{/}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{G}\PYG{p}{))}
+\PYG{n}{R\PYGZus{}G} \PYG{o}{=} \PYG{n}{R\PYGZus{}abs}\PYG{o}{*}\PYG{n}{G} \PYG{c+c1}{\PYGZsh{}Korrektur geometriewinkel}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}Peaks finden\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+
+\PYG{n}{peaks\PYGZus{}bereich} \PYG{o}{=} \PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZgt{}=}\PYG{l+m+mf}{0.3}\PYG{p}{)} \PYG{o}{\PYGZam{}} \PYG{p}{(}\PYG{n}{x}\PYG{o}{\PYGZlt{}=}\PYG{l+m+mf}{1.11}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}Durch log der peaks kann eine linie gezogen werden:}
+\PYG{k}{def} \PYG{n+nf}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{b}\PYG{p}{,}\PYG{n}{c}\PYG{p}{):}
+    \PYG{k}{return} \PYG{n}{b}\PYG{o}{*}\PYG{n}{x}\PYG{o}{+}\PYG{n}{c}
+
+\PYG{c+c1}{\PYGZsh{} Curve Fit für find\PYGZus{}peaks}
+\PYG{n}{params}\PYG{p}{,} \PYG{n}{pcov} \PYG{o}{=} \PYG{n}{curve\PYGZus{}fit}\PYG{p}{(}\PYG{n}{f}\PYG{p}{,}\PYG{n}{x}\PYG{p}{[}\PYG{n}{peaks\PYGZus{}bereich}\PYG{p}{],}\PYG{n}{np}\PYG{o}{.}\PYG{n}{log}\PYG{p}{(}\PYG{n}{R\PYGZus{}G}\PYG{p}{[}\PYG{n}{peaks\PYGZus{}bereich}\PYG{p}{]))}
+\PYG{n}{R\PYGZus{}fit} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{peaks\PYGZus{}bereich}\PYG{p}{],}\PYG{o}{*}\PYG{n}{params}\PYG{p}{))}
+
+\PYG{c+c1}{\PYGZsh{} Minima der Kissig\PYGZhy{}Oszillation finden}
+\PYG{n}{idx\PYGZus{}peaks}\PYG{p}{,} \PYG{n}{peak\PYGZus{}props} \PYG{o}{=} \PYG{n}{find\PYGZus{}peaks}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{R\PYGZus{}G}\PYG{p}{[}\PYG{n}{peaks\PYGZus{}bereich}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{R\PYGZus{}fit}\PYG{p}{),} \PYG{n}{distance}\PYG{o}{=}\PYG{l+m+mi}{7}\PYG{p}{)}
+\PYG{n}{idx\PYGZus{}peaks} \PYG{o}{+=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{where}\PYG{p}{(}\PYG{n}{peaks\PYGZus{}bereich}\PYG{p}{)[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]}
+
+\PYG{c+c1}{\PYGZsh{}Schichtdicke}
+\PYG{n}{delta\PYGZus{}x} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{diff}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{deg2rad}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{idx\PYGZus{}peaks}\PYG{p}{]))}
+\PYG{n}{delta\PYGZus{}x\PYGZus{}mean} \PYG{o}{=} \PYG{n}{ufloat}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{(}\PYG{n}{delta\PYGZus{}x}\PYG{p}{),}\PYG{n}{sem}\PYG{p}{(}\PYG{n}{delta\PYGZus{}x}\PYG{p}{))}
+
+\PYG{n}{d} \PYG{o}{=} \PYG{n}{lambda\PYGZus{}0} \PYG{o}{/} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{delta\PYGZus{}x\PYGZus{}mean}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Schichtdicke berechnet: \PYGZsq{}} \PYG{p}{,} \PYG{n}{d} \PYG{p}{)}
+
+\PYG{n}{n1} \PYG{o}{=} \PYG{l+m+mf}{1.}
+\PYG{n}{z1} \PYG{o}{=} \PYG{l+m+mf}{0.}
+\PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{pi}\PYG{o}{/}\PYG{n}{lambda\PYGZus{}0} 
+
+\PYG{c+c1}{\PYGZsh{}Koeffizienten }
+\PYG{n}{delta2} \PYG{o}{=} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{l+m+mi}{10}\PYG{o}{**}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{6}\PYG{p}{)}
+\PYG{n}{delta3} \PYG{o}{=} \PYG{l+m+mf}{6.2}\PYG{o}{*}\PYG{l+m+mi}{10}\PYG{o}{**}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{6}\PYG{p}{)}
+\PYG{n}{sigma1} \PYG{o}{=} \PYG{l+m+mf}{8.5}\PYG{o}{*}\PYG{l+m+mi}{10}\PYG{o}{**}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} m}
+\PYG{n}{sigma2} \PYG{o}{=} \PYG{l+m+mf}{5.5}\PYG{o}{*}\PYG{l+m+mi}{10}\PYG{o}{**}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} m}
+\PYG{n}{z2} \PYG{o}{=} \PYG{l+m+mf}{8.63}\PYG{o}{*}\PYG{l+m+mi}{10}\PYG{o}{**}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} m \PYGZsh{}(Schichtdicke)}
+
+\PYG{k}{def} \PYG{n+nf}{parrat\PYGZus{}rau}\PYG{p}{(}\PYG{n}{a\PYGZus{}i}\PYG{p}{,}\PYG{n}{delta2}\PYG{p}{,}\PYG{n}{delta3}\PYG{p}{,}\PYG{n}{sigma1}\PYG{p}{,}\PYG{n}{sigma2}\PYG{p}{,}\PYG{n}{z2}\PYG{p}{):}
+    \PYG{n}{n2} \PYG{o}{=} \PYG{l+m+mf}{1.} \PYG{o}{\PYGZhy{}} \PYG{n}{delta2}
+    \PYG{n}{n3} \PYG{o}{=} \PYG{l+m+mf}{1.} \PYG{o}{\PYGZhy{}} \PYG{n}{delta3}
+
+    \PYG{n}{a\PYGZus{}i} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{deg2rad}\PYG{p}{(}\PYG{n}{a\PYGZus{}i}\PYG{p}{)}
+
+    \PYG{n}{kz1} \PYG{o}{=} \PYG{n}{k} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{n1}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{\PYGZhy{}} \PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{a\PYGZus{}i}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{))}
+    \PYG{n}{kz2} \PYG{o}{=} \PYG{n}{k} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{n2}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{\PYGZhy{}} \PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{a\PYGZus{}i}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{))}
+    \PYG{n}{kz3} \PYG{o}{=} \PYG{n}{k} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{n3}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{\PYGZhy{}} \PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{a\PYGZus{}i}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{))}
+
+    \PYG{n}{r12} \PYG{o}{=} \PYG{p}{(}\PYG{n}{kz1} \PYG{o}{\PYGZhy{}} \PYG{n}{kz2}\PYG{p}{)} \PYG{o}{/} \PYG{p}{(}\PYG{n}{kz1} \PYG{o}{+} \PYG{n}{kz2}\PYG{p}{)} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{kz1} \PYG{o}{*} \PYG{n}{kz2} \PYG{o}{*} \PYG{n}{sigma1}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}
+    \PYG{n}{r23} \PYG{o}{=} \PYG{p}{(}\PYG{n}{kz2} \PYG{o}{\PYGZhy{}} \PYG{n}{kz3}\PYG{p}{)} \PYG{o}{/} \PYG{p}{(}\PYG{n}{kz2} \PYG{o}{+} \PYG{n}{kz3}\PYG{p}{)} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{kz2} \PYG{o}{*} \PYG{n}{kz3} \PYG{o}{*} \PYG{n}{sigma2}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}
+
+    \PYG{n}{x2} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{n}{j} \PYG{o}{*} \PYG{n}{kz2} \PYG{o}{*} \PYG{n}{z2}\PYG{p}{)} \PYG{o}{*} \PYG{n}{r23}
+    \PYG{n}{x1} \PYG{o}{=} \PYG{p}{(}\PYG{n}{r12} \PYG{o}{+} \PYG{n}{x2}\PYG{p}{)} \PYG{o}{/} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{r12} \PYG{o}{*} \PYG{n}{x2}\PYG{p}{)}
+    \PYG{n}{R\PYGZus{}parr} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{x1}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}
+
+    \PYG{k}{return} \PYG{n}{R\PYGZus{}parr}
+
+\PYG{n}{params} \PYG{o}{=} \PYG{p}{[}\PYG{n}{delta2}\PYG{p}{,}\PYG{n}{delta3}\PYG{p}{,}\PYG{n}{sigma1}\PYG{p}{,}\PYG{n}{sigma2}\PYG{p}{,}\PYG{n}{z2}\PYG{p}{]}
+\PYG{c+c1}{\PYGZsh{} params, cov = curve\PYGZus{}fit(parrat\PYGZus{}rau, x[1:301], np.log(R\PYGZus{}G[1:301])) \PYGZsh{} Curve\PYGZus{}fit möchte nicht}
+
+\PYG{n}{R\PYGZus{}parr} \PYG{o}{=} \PYG{p}{(}\PYG{n}{parrat\PYGZus{}rau}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{41}\PYG{p}{:}\PYG{l+m+mi}{301}\PYG{p}{],} \PYG{o}{*}\PYG{n}{params}\PYG{p}{))}
+
+
+\PYG{c+c1}{\PYGZsh{} Kritischer Winkel}
+\PYG{n}{x\PYGZus{}c2} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{rad2deg}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{delta2}\PYG{p}{))}
+\PYG{n}{x\PYGZus{}c3} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{rad2deg}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{delta3}\PYG{p}{))}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}kritischer Winkel poly: \PYGZsq{}}\PYG{p}{,} \PYG{n}{x\PYGZus{}c2}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}kritischer Winkel silli: \PYGZsq{}}\PYG{p}{,} \PYG{n}{x\PYGZus{}c3}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Ideale Fresnelreflektivität}
+\PYG{n}{a\PYGZus{}c\PYGZus{}Si} \PYG{o}{=} \PYG{l+m+mf}{0.223}
+\PYG{n}{R\PYGZus{}ideal} \PYG{o}{=} \PYG{p}{(}\PYG{n}{a\PYGZus{}c\PYGZus{}Si} \PYG{o}{/} \PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{41}\PYG{p}{:}\PYG{l+m+mi}{301}\PYG{p}{]))}\PYG{o}{**}\PYG{l+m+mi}{4}
+
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Paramter für fit: \PYGZsq{}}\PYG{p}{,} \PYG{o}{*}\PYG{n}{params}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}plotten}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{()}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{l+m+mi}{301}\PYG{p}{],} \PYG{n}{R\PYGZus{}dif}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{l+m+mi}{301}\PYG{p}{]}\PYG{o}{/}\PYG{l+m+mi}{10}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Diffuser Scan / 10\PYGZsq{}}\PYG{p}{,} \PYG{n}{linewidth}\PYG{o}{=}\PYG{l+m+mf}{0.5}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{l+m+mi}{301}\PYG{p}{],} \PYG{n}{R\PYGZus{}ref}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{l+m+mi}{301}\PYG{p}{]} \PYG{o}{/}\PYG{l+m+mi}{10}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Reflektivitätsscan / 10\PYGZsq{}}\PYG{p}{,} \PYG{n}{linewidth}\PYG{o}{=}\PYG{l+m+mf}{0.5}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{l+m+mi}{301}\PYG{p}{],} \PYG{n}{R\PYGZus{}abs}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{l+m+mi}{301}\PYG{p}{],} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Reflektivität\PYGZsq{}}\PYG{p}{,} \PYG{n}{linewidth}\PYG{o}{=}\PYG{l+m+mf}{0.5}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{41}\PYG{p}{:}\PYG{l+m+mi}{301}\PYG{p}{],} \PYG{n}{R\PYGZus{}ideal}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Ideal Reflektivität nach Fresnel\PYGZsq{}}\PYG{p}{,} \PYG{n}{linewidth}\PYG{o}{=}\PYG{l+m+mf}{0.5}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{41}\PYG{p}{:}\PYG{l+m+mi}{301}\PYG{p}{],} \PYG{n}{R\PYGZus{}parr}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Theoriekurve\PYGZsq{}}\PYG{p}{,} \PYG{n}{linewidth}\PYG{o}{=}\PYG{l+m+mf}{0.5}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{l+m+mi}{301}\PYG{p}{],} \PYG{n}{R\PYGZus{}G}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{l+m+mi}{301}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}Reflektivität\PYGZdl{}\PYGZbs{}cdot G\PYGZdl{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{linewidth}\PYG{o}{=}\PYG{l+m+mf}{0.5}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{idx\PYGZus{}peaks}\PYG{p}{],} \PYG{n}{R\PYGZus{}G}\PYG{p}{[}\PYG{n}{idx\PYGZus{}peaks}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}rx\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Oszillationsminima\PYGZsq{}}\PYG{p}{,}\PYG{n}{alpha}\PYG{o}{=}\PYG{l+m+mf}{0.8}\PYG{p}{,} \PYG{n}{ms}\PYG{o}{=}\PYG{l+m+mf}{2.0}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{yscale}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}log\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{(}\PYG{n}{loc}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}upper right\PYGZsq{}}\PYG{p}{,}\PYG{n}{prop}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}size\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{8}\PYG{p}{\PYGZcb{})}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}\PYGZbs{}alpha\PYGZus{}\PYGZbs{}text}\PYG{l+s+si}{\PYGZob{}i\PYGZcb{}}\PYG{l+s+s1}{ \PYGZbs{},/\PYGZbs{}, \PYGZbs{}si\PYGZob{}\PYGZbs{}degree\PYGZcb{}\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}R\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{tight\PYGZus{}layout}\PYG{p}{(}\PYG{n}{pad}\PYG{o}{=}\PYG{l+m+mf}{0.15}\PYG{p}{,} \PYG{n}{h\PYGZus{}pad}\PYG{o}{=}\PYG{l+m+mf}{1.08}\PYG{p}{,} \PYG{n}{w\PYGZus{}pad}\PYG{o}{=}\PYG{l+m+mf}{1.08}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}build/reflek.pdf\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}
