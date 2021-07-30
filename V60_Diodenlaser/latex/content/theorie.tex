@@ -55,7 +55,7 @@ This results in the, before mentioned missing charge that can move through the c
     \hfill
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \caption{A two dimensional scheme, of a n-type semiconductor made of silicon, doped with Antimony. The picture is taken from source \cite{p-type_doping}.}
+        \caption{A two dimensional scheme, of an n-type semiconductor made of silicon, doped with Antimony. The picture is taken from source \cite{p-type_doping}.}
         \includegraphics[height=5cm]{content/data/N-Type-semiconductor-doping.jpg}
         \label{fig:n-type_doping}
     \end{subfigure}
@@ -88,11 +88,11 @@ This way, whenever light gets emitted by the active medium it's trapped between 
 The photons than bounce back and forth in the resonator and provide a feedback for the active medium.
 Which results in the emission of more photons with the same characteristics as the initial photons.
 In the Diodelaser the resonator consists of a cavity that is made by two cleaved facets at the ends of the diode chip.
-Depending on the coating of these the reflectivy increases or decreases.
-Usually one of the mirrors completly refelects the photons and the other mirror lets some photons pass through.
+Depending on the coating of these the reflectivity increases or decreases.
+Usually one of the mirrors completly reflects the photons and the other mirror lets some photons pass through.
 The laser than consists of the photons that pass through the mirror.
 \\\\
-With all these componentes the Diodelaser emitts laser light with a wavelength near $\lambda = \SI{785}{\nano\meter}$, with an output power of about $P_\text{laser} = \SI{70}{\milli\W}$.
+With all these components the Diodelaser emitts laser light with a wavelength near $\lambda = \SI{785}{\nano\meter}$, with an output power of about $P_\text{laser} = \SI{70}{\milli\W}$.
 
 \subsection{Diffraction Grating}
 Bare Diodelasers emitt light with a large bandwith $\Delta f_\text{laser} = \SI{50}{\mega\Hz}$, which is large compared to the linewidths of atomic transitions $\Delta f_\text{atomic} = \SI{5}{\mega\Hz}$.
@@ -106,15 +106,15 @@ To solve this problem a Diffraction Grating is installed infront of the laser, a
     \label{fig:grating}
 \end{figure}
 
-About $85\%$ of the light that hits the garting gets reflected, this light has grating order $m=0$.
-The other $15\%$ are reflected back into the laser to form an extrenal cavity.
+About $85\%$ of the light that hits the grating gets reflected, this light has grating order $m=0$.
+The other $15\%$ are reflected back into the laser to form an external cavity.
 The light that's reflected back into the laser is of grating order $m=1$.
-Light that tarvels back into the laser stabilizies the frequenzy of the laser and narrows the linewidth to less than $\Delta f_\text{laser} = \SI{1}{\mega\Hz}$.
+Light that travels back into the laser stabilizies the frequency of the laser and narrows the linewidth to less than $\Delta f_\text{laser} = \SI{1}{\mega\Hz}$.
 
 
-\subsection{laser tuning}
-Because the laser always tends to lase in the frequenzy with the greatest net gain we want to find that frequenzy.
-This frequenzy depends on four factors 
+\subsection{Laser tuning}
+Because the laser always tends to lase in the frequency with the greatest net gain we want to find that frequency.
+This frequency depends on four factors 
 
 \begin{itemize}
     \item The medium
@@ -125,44 +125,45 @@ This frequenzy depends on four factors
 
 \begin{figure}
     \centering
-    \caption{The net gain of every componentes should peak at the wavelength $\lambda_0$, the net gain of every component is shown in this picture. The picture is taken from source \cite[6]{anleitung_laser}.}
+    \caption{The net gain of every components should peak at the wavelength $\lambda_0$, the net gain of every component is shown in this picture. The picture is taken from source \cite[6]{anleitung_laser}.}
     \includegraphics[width=0.75\textwidth]{content/data/netgain.png}
     \label{fig:netgain}
 \end{figure}
 \FloatBarrier
-\subsubsection{medium gain}
-All these factors have an influence on the net gain and with that on frequenzy of the laser.
-A graphic illustrating the different influence is visible in garphic \ref{fig:netgain}.
+\subsubsection{Medium gain}
+All these factors have an influence on the net gain and with that on frequency of the laser.
+The different influences are shown in \ref{fig:netgain}.
 The medium gain depends on the properties of the semiconductor and also depends on the temperature of the laser.
 But because the temperature of the laser will be determined in the experiment we can assume that the medium lases with a wavelength of about $\SI{785}{\nano\meter}$ as mentioned before.
 
 \subsubsection{Internal cavity gain}
-The internal cavity adds an influece onto the frequenzy of the laser.
-It's net gain is frequenzy dependent, as shown in figure \ref{fig:netgain}.
+The internal cavity adds an influence onto the frequency of the laser.
+It's net gain is frequency dependent, as shown in figure \ref{fig:netgain}.
 The period is defined by the length of the cavity $L$, the index of refraction $n$ and is given by
 $\Delta f_\text{int} = \frac{c}{2Ln}$.
 
 \subsubsection{Grating gain}
 The grating can be shifted.
 That way only the light from a narrow wavelength band will be fed back into the cavity.
-The lights wavelength can be found by the bragg condition $\lambda = \frac{2d \sin{\theta}}{n}$ with the atomic spacing $d$, the diffraction order $n$ and the glancing angle $\theta$.
-Because the diffraction order $n = 1$ we can write the bragg condition as $\lambda = 2d\sin{\theta}$.
-With this the $\Delta f$ is given by $\frac{f}{\Delta f} = N$ with $N$ as the number of grating lines subtended by the laser beam.
+The light wavelength can be found by the bragg condition $\lambda = \frac{2d \sin{\theta}}{n}$ with the atomic spacing $d$, the diffraction order $n$ and the glancing angle $\theta$.
+Because the diffraction order $n = 1$, we can write the bragg condition as $\lambda = 2d\sin{\theta}$.
+With this the $\Delta f$ is given by $\frac{f}{\Delta f} = N$ with $N$ as the number of grating lines, subtended by the laser beam.
 In the experiment $N=5400$ which results into $\Delta f \approx \SI{70}{\giga\Hz}$.
 
 \subsubsection{External cavity gain}
-The extrenal cavity is made by the garting and the back facet of the diode.
+The external cavity is made by the grating and the back facet of the diode.
 Similar to the internal cavity it's net gain also periodicly shifts, with $\Delta f = \frac{c}{2L}$.
 \\
 But the distance is larger than that of the internal cavity which results to $\Delta f_\text{ext} \approx \SI{10}{\giga\Hz}$.
-Because the period is dependent on the distance between the garting and the diode the period also changed when the garting is moved.
+Because the period is dependent on the distance between the grating and the diode the period also changed when the grating is moved.
 \\\\
 Forcing the laser into lasing with a single mode is achieved by changing the net gain of every component discussed before to the wavelength $\lambda_0$ of the medium.
 The optimal case is pictured in graphic \ref{fig:netgain}, as every net gain peaks at $\lambda_0$.
 
 \subsection{Absorption from Rubidium}
 Photons have the ability to raise the energy state of electrons in atoms.
-After some time the electron falls back to its initial state and emitts light with the frequenzy/wavelength as the photon that started the process.
-The electron can also move back into its initial state by falling back in multiple steps, realising multiple photons doing so, the sum of energy os the released photons must be must be the same.
+After some time the electron falls back to its initial state and emitts light with the frequency/wavelength as the photon that started the process.
+The electron can also move back into its initial state by falling back in multiple steps.
+This realises multiple photons doing so, the sum of energy is the released photons must be must be the same.
 The material that absorbs light in this experiment is Rubidium more specific $\ce{^{85}Rb}$ and $\ce{^{87}Rb}$.
 There Absorption spectrum lies with in the wavelength of the laser used in the experminet.
