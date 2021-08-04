@@ -1,7 +1,5 @@
 \section{Theorie}
 \label{sec:Theorie}
-
-\subsection{Dipole in Ionenkristallen}
 Ionenkristalle bestehen aus einer regelmäßigen Anordnung von Anionen und Kationen.
 Der im Versuch genutzt Kristall ist Kaliumbromid (KBr).
 Dieses bildet ein kubisches Kristallsystem, indem Kalium nur Brom als Nachbaratom hat und umgekehrt.
@@ -11,7 +9,8 @@ Kalium bildet aufgrund der geringeren Elektronnegativität die Kationen.
 Dies allein sorgt aber noch nicht für die Bildung von Dipolen im Kristall, dafür wird dem Kristall ein weiterer Stoff hinzugefügt.
 Dieser Prozess wird Dotierung genannt, durch ihn können die Eigenschaften vom Kristall geändert werden.
 In diesem Versuch wird Kaliumbromid mit einer Strontium-Dotierung genutzt, dieses ist im Kristall doppelt positiv geladen.
-Durch die doppelte positive Ladung verdrängt es ein Kationen bzw. ein Kaliumion.
+Durch die doppelte positive Ladung verdrängt es ein Kationen bzw. ein Kaliumion und rückt an seine Stelle.
+Zudem verdrängt es ein weiteres Kationen in seiner Umgebung und sorgt so für eine Leerstelle.
 So ensteht ein Ladungsgefälle von dem Strontium zu der Leerstelle hin, was ein Dipolmoment zur Folge hat.
 Verdeutlicht wird dies in \autoref{fig:dotierung}.
 \begin{figure}
@@ -25,6 +24,7 @@ Die Änderung kann zum Beispiel durch ein äußeres Feld hervorgerufen werden.
 Ohne äußere Einflüsse ist die Ausrichtung der Dipole bei Raumtemperatur Boltzmann-Verteilt, sodass kein Gesamtdipolmoment vom Kristall ausgeht.
 \\\\
 Damit sich die Dipole wie erwähnt im E-Feld ausrichten können muss eine Aktivierungsenergie $W$ geleistet werden, die für die Leerstellendiffusion nötig ist.
+Diese Aktivierungsenergie muss aufgebracht werden um das Gitterpotential des Kristalls zu überwinden, was die Bewegung des Dipols ermöglicht.
 Diese beeinflusst die Relaxationszeit der Dipole im Kristall.
 Die Relaxationszeit im Kristall kann durch die Gleichung 
 \begin{equation}
@@ -32,9 +32,14 @@ Die Relaxationszeit im Kristall kann durch die Gleichung
     \label{eq:Relaxationszeit}
 \end{equation}
 bestimmt werden.
+Sie gibt die mittlere Zeit zwischen zwei Umorientierungen eines Dipols im Kristall an.
 Wie aus der Gleichung zu entnehmen ist, hängt die Relaxationszeit auch von der Temperatur $T$ des Kristalls ab.
 Zudem beschreibt $\tau_0$ die charakteristische Relaxationszeit und $k_\text{B}$ die Boltzmann-Konstante.
-
+Die charakteristische Relaxationszeit $\tau_0$ ist der Grenzwert der Relaxationszeit für hohe Temperaturen, also
+\begin{equation*}
+    \tau_0 = \lim\limits_{T\rightarrow\infty}{\tau(T)}
+\end{equation*}
+ 
 \subsection{Depolarisationsstrom}
 Durch ein äußeres E-Feld richten sich die Dipole im Kristall aus, da sie der Richtung der Feldlinien folgen.
 Hierdurch kommt es zur Polarisation.
@@ -59,7 +64,7 @@ Durch diese Näherung ergibt sich für die makroskopische Polarisation dann
     \label{eq:langevin2}
 \end{equation}
 welche sich aus der Summe aller mittleren Dipolmomente pro Volumen ergibt.
-$N$ ist hier die Dichte der Dipole pro Volumen.
+Durch $N$ ist hier die Dichte der Dipole pro Volumen gegeben.
 Die temperaturunabhängige Stromdichte $j(T)$ wird durch
 \begin{equation}
     j(T) = P(T)p \frac{\symup{d}N}{\symup{d}t}
@@ -73,18 +78,22 @@ Für die Rate der Relation der Dipole gilt
 \end{equation}
 mit 
 \begin{equation}
-    N = N_\text{P} \exp{-\frac{1}{b} \int_{T_0}^{T} \frac{\symup{d}T'}{\tau{T'}}} \, .
+    N = N_\text{P} \symup{exp}\left (-\frac{1}{b} \int_{T_0}^{T} \frac{\symup{d}T'}{\tau(T')} \right ) \, .
 \end{equation}
-Dabei ist $N_\text{P}$ die Anzahl der ausgerichteten Dipole zum Beginn des Heizprozesses.
+Dabei ist $N_\text{P}$ die Anzahl der ausgerichteten Dipole zum Beginn des Heizprozesses und $b := \frac{\symup{d}T}{\symup{d}t}$ da angenommen wird, dass die Heizarte konstant ist.
 Durch einsetzen in Gleichung \eqref{eq:stromdichte_unab} ergibt sich nun der Depolarisationsstrom
 \begin{equation}
-    j(T) = \frac{p^2EN_\text{P}}{3 k_\text{B}T\tau_0} \exp{\frac{-W}{k_\text{B}T}} \exp{-\frac{1}{b} \int_{T_0}^{T} \frac{\symup{d}T'}{\tau{T'}}} \, .
+    j(T) = \frac{p^2EN_\text{P}}{3 k_\text{B}T\tau_0} \symup{exp}\left (\frac{-W}{k_\text{B}T} \right ) \symup{exp} \left (-\frac{1}{b} \int_{T_0}^{T} \frac{\symup{d}T'}{\tau(T')}\right ) \, .
 \end{equation}
 Diese kann zu
 \begin{equation}
-    j(T) \approx  \frac{p^2EN_\text{P}}{3 k_\text{B}T\tau_0} \exp{\frac{-W}{k_\text{B}T}}
+    j(T) \approx  \frac{p^2EN_\text{P}}{3 k_\text{B}T\tau_0} \symup{exp} \left ( \frac{-W}{k_\text{B}T} \right )
 \end{equation}
-genähert werden, da bei kleinen Temperaturen und sehr großen Temperaturen kein Strom fließt.
+genähert werden, da bei kleinen Temperaturen noch kein Strom fließt und so
+\begin{equation*}
+    \int_{T_0}^{T} \symup{exp} \left ( - \frac{W}{k_\text{B}T} \right ) \symup{d}T' \approx 0
+\end{equation*}
+gilt.
 Die Änderung der Polarisation ist gegeben durch
 \begin{equation*}
     \frac{\symup{d}P}{\symup{d}t}=-\frac{P(t)}{\tau(T(t))} \, .
@@ -100,7 +109,7 @@ Durch Integration folgt
     \tau(T) = \frac{ \int_{T}^{\infty} I(T')\symup{d}T'}{bI(T')} \, .
 \end{equation}
 Dabei wird eine konstante Heizrate $b = \frac{\symup{d}T}{\symup{d}t}$ angenommen.
-Durch gleichsetzen mit der Gleichung \eqref{eq:Relaxationszeit} ergibt sich
+Durch gleichsetzen mit Gleichung \eqref{eq:Relaxationszeit} ergibt sich
 \begin{equation}
     \frac{W}{k_\text{b}T} = \ln \frac{ \int_{T}^{\infty} I(T')\symup{d}T'}{\tau_0 b I(T')} \, ,
     \label{eq:int}
@@ -126,22 +135,22 @@ Im Versuch wird eine konstanten Heizrate $b = \frac{\symup{d}T}{\symup{d}t}$ ver
 Mit dieser lässt sich die Relaxaktionsrate aus der Relaxationszeit \eqref{eq:Relaxationszeit} zu
 \begin{align}
     \frac{\symup{d}N}{\symup{d}t} & = -\frac{N}{\tau(T)}\notag \\
-    & = N_\text{p}\exp\left(-\frac{1}{b}\int_{T_0}^T \frac{\symup{d}T'}{\tau(T')}\right)
+    & = N_\text{p}\exp \left (-\frac{1}{b}\int_{T_0}^T \frac{\symup{d}T'}{\tau(T')} \right )
     \label{eq:Anzahl}
 \end{align}
 bestimmen.
 Hierbei ist $N_\text{p}$ die Anzahl der ausgerichteten Dipole pro Volumeneinheit zum Zeitpunkt $t_0$ bei der Temperatur $T_0$.
 Mit der Relaxationszeit \eqref{eq:Relaxationszeit} und der Anzahl der Dipole N \eqref{eq:Anzahl} ergibt sich für die Depolarisationsstromdichte \eqref{eq:stromdichte} der Ausdruck
 \begin{equation}\label{eq:stromdichte2}
-    j(T)= \frac{p^2E}{3kT_\text{p}}\frac{N_\text{p}}{\tau_0}\exp\left(-\frac{1}{b\tau_0}\int_{T_0}^T \exp\left(-\frac{W}{kT'}\symup{d}T'\right) \right)\exp\left(-\frac{W}{kT}\right)\, .
+    j(T)= \frac{p^2E}{3kT_\text{p}}\frac{N_\text{p}}{\tau_0} \exp \left (-\frac{1}{b\tau_0}\int_{T_0}^T \exp \left (-\frac{W}{kT'} \right ) \symup{d}T'  \right ) \exp \left (-\frac{W}{kT} \right )\, .
 \end{equation}
-Da die Temperatur zu Beginn des Depolarisationprozesses klein und somit $\exp(-\frac{W}{kT})\approx 0$ gilt, ist stets
+Da die Temperatur zu Beginn des Depolarisationprozesses klein und somit $-\frac{W}{kT}\approx 0$ gilt, ist stets
 \begin{equation*}
-    \int_{T_0}^T \exp\left(-\frac{W}{kT}\symup{d}T' \right) \approx 0\, ,
+    \int_{T_0}^T \exp \left (-\frac{W}{kT}\symup{d}T' \right ) \approx 0\, ,
 \end{equation*}
 sodass für die Depolarisationsstromdichte im Anfangsbereich die Näherung
 \begin{equation}
-    j(T) \approx \frac{p^2 E}{3kT_\text{p}}\frac{N_\text{p}}{\tau_0}\exp\left(-\frac{W}{kT}\right)
+    j(T) \approx \frac{p^2 E}{3kT_\text{p}}\frac{N_\text{p}}{\tau_0} \exp \left (-\frac{W}{kT} \right )
     \label{eq:anlauf}
 \end{equation}
 gilt.
