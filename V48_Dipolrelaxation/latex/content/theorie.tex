@@ -54,7 +54,7 @@ Durch diese Rückausrichtung der Dipole kann ein messbarer Strom induziert werde
 Die Dipole richten sich dabei so lange aus, dass wie erwähnt kein äußeres Gesamtdipolmoment existiert und sie wieder Boltzmann-Verteilt sind.
 Da sie aber nach Gleichung \eqref{eq:Relaxationszeit} für die Bewegung eine gewisse Aktivierungsenergie benötigen ist die Wiederausrichtung bei sehr niedrigen Temperatur nur sehr langsam.
 
-\subsection{Herleitung des Depolarisationsstroms über den Polarisationsansatz}
+\subsection{Herleitung des Aktivierungsenergie}
 \label{sec:polarisationsansatz}
 Die Polarisation im Kristall ist durch Gleichung \eqref{eq:Langevin} gegeben.
 Da für sehr hohe Temperaturen der Zähler klein im Vergleich zum Nenner wird $pE << k_\text{B} T$, kann die Funktion durch eine Taylorentwicklung genähert werden.
@@ -85,15 +85,6 @@ Durch einsetzen in Gleichung \eqref{eq:stromdichte_unab} ergibt sich nun der Dep
 \begin{equation}
     j(T) = \frac{p^2EN_\text{P}}{3 k_\text{B}T\tau_0} \symup{exp}\left (\frac{-W}{k_\text{B}T} \right ) \symup{exp} \left (-\frac{1}{b} \int_{T_0}^{T} \frac{\symup{d}T'}{\tau(T')}\right ) \, .
 \end{equation}
-Diese kann zu
-\begin{equation}
-    j(T) \approx  \frac{p^2EN_\text{P}}{3 k_\text{B}T\tau_0} \symup{exp} \left ( \frac{-W}{k_\text{B}T} \right )
-\end{equation}
-genähert werden, da bei kleinen Temperaturen noch kein Strom fließt und so
-\begin{equation*}
-    \int_{T_0}^{T} \symup{exp} \left ( - \frac{W}{k_\text{B}T} \right ) \symup{d}T' \approx 0
-\end{equation*}
-gilt.
 Die Änderung der Polarisation ist gegeben durch
 \begin{equation*}
     \frac{\symup{d}P}{\symup{d}t}=-\frac{P(t)}{\tau(T(t))} \, .
@@ -101,7 +92,7 @@ Die Änderung der Polarisation ist gegeben durch
 Hierbei beschreibt $P$ die Polarisation der Probe, welche dem Gesamtdipolmoment pro Volumeneinheit entspricht.
 Die zeitliche Änderung der Polarisation induziert zudem Strom
 \begin{equation}
-    I(t) = F\frac{\symup{d}P}{\symup{d}t} \, ,
+    I(t) = F \, \frac{\symup{d}P}{\symup{d}t} \, ,
 \end{equation}
 wobei $F$ den Probenquerschnitt angibt.
 Durch Integration folgt 
@@ -118,10 +109,10 @@ woraus sich die Aktivierungsenergie $W$ bestimmen lässt.
 Da bei der oberen Integrationskonstante $T=\infty$ kein Strom mehr induziert wird, kann die maximale Relaxationszeit aus der Lage des ersten Maximums der Stromkurve bestimmt werden.
 Durch Ableiten der Stromdichte \eqref{eq:stromdichte} folgt also
 \begin{equation}
-    \tau _\text{max}(T_\text{max}) = \frac{k_\text{b} T_\text{max} ^2}{bW}
+    \tau _\text{max}(T_\text{max}) = \frac{k_\text{b} T_\text{max} ^2}{bW} \, ,
     \label{eq:t_max}
 \end{equation}
-,woraus wiederum durch einsetzen in Gleichung \eqref{eq:Relaxationszeit}, die charakteristische Relaxationszeit $\tau_0$ bestimmten werden kann.
+woraus wiederum durch einsetzen in Gleichung \eqref{eq:Relaxationszeit}, die charakteristische Relaxationszeit $\tau_0$ bestimmten werden kann.
 
 
 \subsection{Herleitung des Depolarisationsstroms über die Stromdichte}
@@ -144,7 +135,7 @@ Mit der Relaxationszeit \eqref{eq:Relaxationszeit} und der Anzahl der Dipole N \
 \begin{equation}\label{eq:stromdichte2}
     j(T)= \frac{p^2E}{3kT_\text{p}}\frac{N_\text{p}}{\tau_0} \exp \left (-\frac{1}{b\tau_0}\int_{T_0}^T \exp \left (-\frac{W}{kT'} \right ) \symup{d}T'  \right ) \exp \left (-\frac{W}{kT} \right )\, .
 \end{equation}
-Da die Temperatur zu Beginn des Depolarisationprozesses klein und somit $-\frac{W}{kT}\approx 0$ gilt, ist stets
+Da die Temperatur zu Beginn des Depolarisationprozesses klein und somit $\left (-\frac{W}{kT} \right )\approx 0$ gilt, ist stets
 \begin{equation*}
     \int_{T_0}^T \exp \left (-\frac{W}{kT}\symup{d}T' \right ) \approx 0\, ,
 \end{equation*}
